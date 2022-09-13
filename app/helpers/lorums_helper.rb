@@ -1,0 +1,2 @@
+module LorumsHelper
+end
