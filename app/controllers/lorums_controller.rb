@@ -3,6 +3,7 @@ class LorumsController < ApplicationController
         
     end
     def result
-        @lorum_paragraphe = params[:lorum]
+        numbers = params[:lorum].to_i
+        @lorums = Lorum.select(id: 1..numbers)
     end
 end

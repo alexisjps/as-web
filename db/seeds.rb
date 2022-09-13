@@ -14,7 +14,7 @@ puts 'Create lorums ipsum texting'
 200.times do
 Lorum.create!(
     paragraphe: Faker::Lorem.paragraph,
-    # number: (1..200).to_a.sample
+    number: (1..200).to_a.sample
 )
 end
 puts 'Lorum ipsum created'
