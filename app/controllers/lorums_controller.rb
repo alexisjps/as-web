@@ -4,9 +4,12 @@ class LorumsController < ApplicationController
     def result
         @lorums = Lorum.all
         @num = params[:lorum].to_i
-        @lorum = Lorum.find(@num)
-        while @num < @lorums.length
-            @asnwer = @lorum.paragraphe
+        # @lorum = Lorum.find(@num)
+        # @answer = []
+        while @num > @lorums.size
+            @answer = @lorums.first(@num)
+            @num += 1
         end 
+        raise
     end
 end
