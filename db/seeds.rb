@@ -11,10 +11,12 @@ Lorum.destroy_all
 puts 'Clean ok'
 sleep(2)
 puts 'Create lorums ipsum texting'
+numero = 1
 200.times do
-Lorum.create!(
-    paragraphe: Faker::Lorem.paragraph,
-    # number: (1..200).to_a.sample
-)
+    numero += 1
+    Lorum.create!(
+        paragraphe: Faker::Lorem.paragraph,
+        number: numero
+    )
 end
 puts 'Lorum ipsum created'

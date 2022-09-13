@@ -1,8 +1,12 @@
 class LorumsController < ApplicationController
     def index
-        @lorums = Lorum.all
     end
-    def show
-        @lorum = Lorum.find(params[:id])
+    def result
+        @lorums = Lorum.all
+        @num = params[:lorum].to_i
+        @lorum = Lorum.find(@num)
+        while @num < @lorums.length
+            @asnwer = @lorum.paragraphe
+        end 
     end
 end
