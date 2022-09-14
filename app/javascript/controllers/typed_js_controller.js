@@ -3,8 +3,10 @@ import Typed from 'typed.js'
 // Connects to data-controller="typed-js"
 export default class extends Controller {
   connect() {
-    this.typed(
-      
-    )
+      new Typed(this.element, {
+        strings: ["Tool box", "For developers", "For designers", "And for everyone"],
+        typeSpeed: 50,
+        loop: true
+  })
   }
 }
