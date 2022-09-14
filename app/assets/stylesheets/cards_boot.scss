@@ -1,0 +1,15 @@
+.card{
+    img.card-img-top {
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        object-fit: cover;
+        max-height: 240px !important;
+ }
+}
+
+.card{
+    border-radius: 30px;
+    &:hover{
+        transform: scale(0.9);
+    }
+}
