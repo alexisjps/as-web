@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: "lorums#index"
-  get "/result", to: "lorums#result"
+  get "/lorum-result", to: "lorums#lorum_result"
 end
