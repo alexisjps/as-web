@@ -15,7 +15,7 @@ numero = 1
 200.times do
     numero += 1
     Lorum.create!(
-        paragraphe: Faker::Lorem.paragraph_by_chars(number: (numero * 10), supplemental: false),
+        paragraphe: Faker::Lorem.paragraph_by_chars(number: (numero * 100), supplemental: false),
         number: numero
     )
 end
