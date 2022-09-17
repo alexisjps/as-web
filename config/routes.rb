@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root "lorums#home"
   get "/lorum", to: "lorums#index"
   get "/lorum-resultat", to: "lorums#lorum_result"
+  get "emojis", to: "emojis#index"
 end
