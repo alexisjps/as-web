@@ -7,5 +7,8 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ToastBoostrapController from "./toast_boostrap_controller"
+application.register("toast-boostrap", ToastBoostrapController)
+
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
