@@ -11,7 +11,7 @@ gem "faker", "~> 2.18"
 gem "sprockets-rails"
 
 # use sitemap
-gem 'sitemap_generator'
+# gem 'sitemap_generator'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
