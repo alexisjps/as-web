@@ -17,12 +17,12 @@ SitemapGenerator::Sitemap.create do
   #
   # Add '/articles'
   #
-    add lorum_path, :priority => 0.7, :changefreq => 'daily'
-    add emojis_path, :priority => 0.7, :changefreq => 'daily'
+    # add lorum_path, :priority => 0.7, :changefreq => 'daily'
+    # add emojis_path, :priority => 0.7, :changefreq => 'daily'
 
   # Add all articles:
   #
-  #   Article.find_each do |article|
-  #     add article_path(article), :lastmod => article.updated_at
-  #   end
+    Lorum.find_each do |lorum|
+      add lorum_path(lorum), :lastmod => lorum.updated_at
+    end
 end
