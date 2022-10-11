@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get "/lorum", to: "lorums#index"
   get "/lorum-resultat", to: "lorums#lorum_result"
   get "emojis", to: "emojis#index"
+  get 'mot-de-passe', to: 'pages#password'
 end
