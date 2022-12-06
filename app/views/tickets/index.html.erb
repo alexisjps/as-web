@@ -1,0 +1,32 @@
+<% compteur = 0 %>
+<style>
+.card {
+    border-radius: 0px!important;
+    height: auto!important;
+}
+.footer.mt-5 {
+    display: none;
+}
+</style>
+<meta http-equiv="Refresh" content="20">
+<div class="container">
+  <h1 class="mb-5">File d'attente des tickets</h1>
+  <%= link_to "Créer un ticket", new_ticket_path, class: "btn btn-warning" %><br><br>
+  <div id="tickets">
+    <% @tickets.each do |ticket| %>
+        <div class="card mb-3">
+          <div class="card-header">
+            Numéro dans la file d'attente : <%= compteur += 1 %>
+          </div>
+          <div class="card-body" style="height: 200px;">
+            <blockquote class="blockquote mb-0">
+              <p><%= ticket.comment %></p>
+              <footer class="blockquote-footer"><cite title="Source Title"><%= ticket.name %></cite></footer>
+            </blockquote>
+            <%= link_to "Voir le détail du ticket", ticket %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+

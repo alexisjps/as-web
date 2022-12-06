@@ -1,0 +1,19 @@
+<style>
+.footer.mt-5 {
+    bottom: 0px;
+    position: absolute;
+    width: 100vw;
+}
+</style>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <h2><%= @ticket.name %></h2>
+  <%= render @ticket %>
+
+  <div>
+    <%= link_to "Modifier ma demande", edit_ticket_path(@ticket) %> |
+    <%= link_to "Retour à la vue d'ensemble", tickets_path %>
+
+    <%= button_to "Supprimer le ticket", @ticket, method: :delete, class: "btn btn-danger mt-3" %>
+  </div>
+</div>
