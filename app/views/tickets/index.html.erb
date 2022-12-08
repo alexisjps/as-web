@@ -8,6 +8,12 @@
     display: none;
 }
 </style>
+<script>
+    function autoRefresh() {
+        window.location = window.location.href;
+    }
+    setInterval('autoRefresh()', 120000);
+</script>
 <div class="container">
   <h1 class="mb-5">File d'attente des tickets</h1>
   <%= link_to "Créer un ticket", new_ticket_path, class: "btn btn-warning" %><br><br>
