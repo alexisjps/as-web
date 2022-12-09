@@ -14,8 +14,8 @@
   <div id="tickets">
     <% @tickets.each do |ticket| %>
         <div class="card mb-3">
-          <div class="card-header">
-            Numéro dans la file d'attente : <%= compteur += 1 %>
+          <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div>Numéro dans la file d'attente : <%= compteur += 1 %>.</div> <div>Ticket créé à : <%= ticket.created_at.strftime("%H:%M") %></div>
           </div>
           <div class="card-body" style="height: 200px;">
             <blockquote class="blockquote mb-0">
