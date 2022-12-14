@@ -23,8 +23,6 @@ gem "devise"
 # Zeitwerk
 # gem 'zeitwerk', '~> 2.6'
 
-# Use devise
-gem "devise"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 
