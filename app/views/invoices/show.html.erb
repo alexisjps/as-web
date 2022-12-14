@@ -1,0 +1,50 @@
+<style>
+.footer.mt-5 {
+    display: none;
+}
+</style>
+<div class="container">
+  <%= link_to "Retour à mes factures", invoices_path, class: "btn btn-dark m-3" %>
+  <p style="color: green"><%= notice %></p>
+
+  <div class="form-inputs p-5 mb-5" style="background-color: #fff; border: 1px solid #F4F4F4;">
+        <div class="d-flex flex-row-reverse">
+          <h5> Facture n°:  <%= @invoice.invoice_number %> </h5>
+        </div>
+        <div class="my-infos">
+        <h4>Facture éditée par :</h4>
+          Adresse : <%= @invoice.my_compagny_address %><br>
+          Téléphone : <%= @invoice.my_company_phone %><br>
+          Mail : <%= @invoice.my_company_email %><br>
+          Siret :<%= @invoice.my_company_siret %><br>
+        </div>
+        <div class="d-flex align-items-end flex-column">
+        <h4> Facture adressée à :</h4><br>
+            <%= @invoice.customer_name %><br>
+            <%= @invoice.customer_address %><br>
+           Siret : <%= @invoice.customer_siret %><br><br>
+        </div>
+        <div class="d-flex justify-content-center w-100">
+            <h5>Date de facturation :</h5><span style="margin-left: 1%;"><b><%= @invoice.date %></b></span><br><br>
+        </div>
+           <b>Titre de la facture : </b><%= @invoice.description %><br><br><br>
+           Détail de facturation : <%= @invoice.prestation %><br>
+        <div class="d-flex align-items-end flex-column w-20">
+           <b>Taux de tva :</b> <%= @invoice.invoice_tva %>%<br>
+           <b>Montant total TTC :</b>
+            <% total_tva = (@invoice.amount * @invoice.invoice_tva) / 100 %>
+            <%= total_tva + @invoice.amount %>€
+        </div>
+           <h4>Détails de facturation :</h4><br><br>
+           <%= @invoice.my_company_paiement %>
+      </div>
+
+  <div>
+  <form class="d-flex justify-content-end">
+    <input class="btn btn-info" id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer ma facture" />
+  </form>
+  <div class="d-flex">
+    <%= button_to "Supprimer ma facture", @invoice, method: :delete, class: "btn btn-danger m-3" %>
+    <%= link_to "Modifier me facture", edit_invoice_path(@invoice), class: "btn btn-primary m-3" %>
+  </div>
+</div>

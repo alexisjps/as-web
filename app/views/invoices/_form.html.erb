@@ -1,0 +1,36 @@
+
+<div class="container p-5" style="background-color: #fff; border: 1px solid #F4F4F4;">
+  <%= simple_form_for(@invoice) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <div class="d-flex flex-row-reverse">
+          <%= f.input :invoice_number %>
+      </div>
+      <div class="my-infos">
+          <%= f.input :my_compagny_address %>
+          <%= f.input :my_company_phone %>
+          <%= f.input :my_company_email %>
+          <%= f.input :my_company_siret %>
+      </div>
+      <div class="d-flex align-items-end flex-column">
+          <%= f.input :customer_name %>
+          <%= f.input :customer_address %>
+          <%= f.input :customer_siret %>
+      </div>
+      <div class="d-flex justify-content-center w-100">
+          <%= f.input :date %>
+      </div>
+          <%= f.input :description %>
+          <%= f.input :prestation %>
+      <div class="d-flex align-items-end flex-column w-20">
+          <%= f.input :invoice_tva, collection: [ "20%", "10%", "5.5%"]  %>
+          <%= f.input :amount %>
+      </div>
+          <%= f.input :my_company_paiement %>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
