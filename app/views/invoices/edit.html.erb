@@ -1,0 +1,10 @@
+<h1>Editing invoice</h1>
+
+<%= render "form", invoice: @invoice %>
+
+<br>
+
+<div>
+  <%= link_to "Voir ma facture", @invoice %> |
+  <%= link_to "Retour à mes factures", invoices_path %>
+</div>
