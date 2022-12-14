@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  my_company_name: MyString
+  my_compagny_address: MyString
+  my_company_phone: 1
+  my_company_email: MyString
+  my_company_siret: 1
+  my_company_tva: MyString
+  my_company_paiement: MyText
+  customer_name: MyString
+  customer_address: MyString
+  customer_email: MyString
+  customer_siret: 1
+  date: 2022-12-14
+  description: MyString
+  invoice_number: 1
+  prestation: MyText
+  invoice_tva: 1
+
+two:
+  amount: 1
+  my_company_name: MyString
+  my_compagny_address: MyString
+  my_company_phone: 1
+  my_company_email: MyString
+  my_company_siret: 1
+  my_company_tva: MyString
+  my_company_paiement: MyText
+  customer_name: MyString
+  customer_address: MyString
+  customer_email: MyString
+  customer_siret: 1
+  date: 2022-12-14
+  description: MyString
+  invoice_number: 1
+  prestation: MyText
+  invoice_tva: 1
