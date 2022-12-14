@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <div class="container-fluid">
-    <%= link_to "https://astephan.digital", class: "navbar-brand" do %>
+    <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "https://astephan.digital/wp-content/uploads/2022/02/Logo-AlexStephan-AS-web.png" %>
     <% end %>
 
@@ -14,10 +14,13 @@
             <%= link_to "Accueil", "/", class: "nav-link" %>
           </li>
           <li class="nav-item active">
+            <%= link_to "Facturation", "/invoices", class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
             <%= link_to "Créer un ticket", "/tickets", class: "nav-link red" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Retour sur AS web", "https://astephan.digital", class: "nav-link" %>
+            <%= link_to "Blog", "https://astephan.digital/blog", class: "nav-link", target: "_blank" %>
           </li>
       </ul>
     </div>
