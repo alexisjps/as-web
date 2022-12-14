@@ -8,6 +8,7 @@
 require 'faker'
 puts 'Clean database'
 Lorum.destroy_all
+User.destroy_all
 puts 'Clean ok'
 sleep(2)
 puts 'Create lorums ipsum texting'
@@ -20,3 +21,6 @@ numero = 1
     )
 end
 puts 'Lorum ipsum created'
+puts 'user creating'
+User.create!(first_name: 'Alexis', last_name: "Stephan", email: 'test@test.com', password: '123456', siret: "123456789", phone: '0646820375', address: '12 rue lesueur Paris')
+puts 'user created'
