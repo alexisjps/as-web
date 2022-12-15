@@ -8,6 +8,9 @@
           <%= f.input :invoice_number %>
       </div>
       <div class="my-infos">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, width: 80, height: 80, class: "rounded mb-5" %>
+        <% end %>
         <h4>Facture éditée par :</h4>
         <%= current_user.first_name %> <%= current_user.last_name %><br>
         <%= current_user.address %><br>
@@ -26,7 +29,7 @@
           <%= f.input :description %>
           <%= f.input :prestation %>
       <div class="d-flex align-items-end flex-column w-20">
-          <%= f.input :invoice_tva, collection: [ "20%", "10%", "5.5%"]  %>
+          <%= f.input :invoice_tva, collection: ["0%", "20%", "10%", "5.5%"]  %>
           <%= f.input :amount %>
       </div>
           <%= f.input :my_company_paiement %>

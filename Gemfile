@@ -20,6 +20,10 @@ gem "puma", "~> 5.0"
 
 # Use authentification
 gem "devise"
+
+# Use cloudinary
+gem "cloudinary"
+
 # Zeitwerk
 # gem 'zeitwerk', '~> 2.6'
 
