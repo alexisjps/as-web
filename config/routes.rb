@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :coordinates
   devise_for :users
   resources :invoices
   resources :tickets

@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Modifier mon adresse</h1>
+</div>
+<%= render "form", coordinate: @coordinate %>
+
+<br>
+
+<div class="container">
+  <%= link_to "Voir la position", @coordinate %> |
+  <%= link_to "Retour sur la carte", coordinates_path %>
+</div>
