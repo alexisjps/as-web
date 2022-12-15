@@ -24,6 +24,9 @@ gem "devise"
 # Use cloudinary
 gem "cloudinary"
 
+# Geocode
+gem "geocoder"
+
 # Zeitwerk
 # gem 'zeitwerk', '~> 2.6'
 
