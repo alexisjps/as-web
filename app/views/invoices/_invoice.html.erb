@@ -8,7 +8,7 @@
         </div>
         <div class="my-infos">
           <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, width: 80, height: 80, class: "rounded mb-5" %>
+            <%= cl_image_tag current_user.photo.key, width: 80, height: 80, :gravity=>"faces", :crop=>"fill", class: "rounded mb-5" %>
           <% end %>
         <h4>Facture éditée par :</h4>
         <%= current_user.first_name %> <%= current_user.last_name %><br>
