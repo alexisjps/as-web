@@ -61,6 +61,10 @@ gem "font-awesome-sass", "~> 6.1"
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# Protect my API key
+
+gem "dotenv-rails", groups: [:development, :test]
+
 # Use bootstrap
 gem "bootstrap", "~> 5.1.3"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
