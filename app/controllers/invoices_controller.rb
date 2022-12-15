@@ -22,8 +22,9 @@ class InvoicesController < ApplicationController
 
   # POST /invoices or /invoices.json
   def create
+    @user = current_user
     @invoice = Invoice.new(invoice_params)
-
+    @invoice.user = @user
     respond_to do |format|
       if @invoice.save
         format.html { redirect_to invoice_url(@invoice), notice: "Invoice was successfully created." }
