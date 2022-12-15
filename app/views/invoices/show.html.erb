@@ -8,25 +8,30 @@
   <p style="color: green"><%= notice %></p>
 
   <div class="form-inputs p-5 mb-5" style="background-color: #fff; border: 1px solid #F4F4F4;">
-        <div class="d-flex flex-row-reverse">
+        <div class="d-flex justify-content-center">
           <h5> Facture n°:  <%= @invoice.invoice_number %> </h5>
         </div>
-        <div class="my-infos">
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "rounded mb-5" %>
+        <div class="facture-informations">
+          <div class="my-infos">
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "rounded mb-5" %>
+            <% end %>
+          <h4>Facture éditée par :</h4>
+            <%= current_user.first_name %> <%= current_user.last_name %><br>
+          <%= current_user.address %><br>
+          <%= current_user.phone %><br>
+          <%= current_user.email %><br>
+          <% if current_user.tva != nil %>
+            N° TVA :<%= current_user.tva %><br>
           <% end %>
-        <h4>Facture éditée par :</h4>
-          <%= current_user.first_name %> <%= current_user.last_name %><br>
-        <%= current_user.address %><br>
-        <%= current_user.phone %><br>
-        <%= current_user.email %><br>
-        Siret : <%= current_user.siret %>
-        </div>
-        <div class="d-flex align-items-end flex-column">
-        <h4> Facture adressée à :</h4><br>
-            <%= @invoice.customer_name %><br>
-            <%= @invoice.customer_address %><br>
-           Siret : <%= @invoice.customer_siret %><br><br>
+          Siret : <%= current_user.siret %>
+          </div>
+          <div class="d-flex align-items-end flex-column">
+          <h4> Facture adressée à :</h4><br>
+              <%= @invoice.customer_name %><br>
+              <%= @invoice.customer_address %><br>
+            Siret : <%= @invoice.customer_siret %><br><br>
+          </div>
         </div>
         <div class="d-flex justify-content-center w-100">
             <h5>Date de facturation :</h5><span style="margin-left: 1%;"><b><%= @invoice.date %></b></span><br><br>
@@ -40,12 +45,12 @@
             <%= total_tva + @invoice.amount %>€
         </div>
            <h4>Détails de facturation :</h4><br><br>
-           <%= @invoice.my_company_paiement %>
-      </div>
-
-  <div>
+            <%= current_user.infos_payment %><br><br>
+            <h4>Conditions de paiements :</h4><br><br>
+            <%= current_user.conditions %>
+    </div>
   <form class="d-flex justify-content-end">
-    <input class="btn btn-info" id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer ma facture" />
+    <input class="btn btn-info text-white" id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer ma facture" />
   </form>
   <div class="d-flex">
     <%= button_to "Supprimer ma facture", @invoice, method: :delete, class: "btn btn-danger m-3" %>

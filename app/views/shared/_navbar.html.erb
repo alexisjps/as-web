@@ -19,9 +19,22 @@
           <li class="nav-item active">
             <%= link_to "Créer un ticket", "/tickets", class: "nav-link red" %>
           </li>
+         
           <li class="nav-item active">
             <%= link_to "Blog", "https://astephan.digital/blog", class: "nav-link", target: "_blank" %>
           </li>
+          <% if current_user != nil %>
+          <% if current_user.photo.attached? %>
+            <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, :gravity=> "face", class: "rounded" %></span>
+            <% else %>
+            <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img style="width: 40px; height: 40px; border-radius: 100px;" src="https://res.cloudinary.com/hello-my-business/image/upload/v1671101861/Screenshot_2022-12-15_at_11.56.59-removebg-preview_mfdlge.png"></span>
+            <% end %>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Modifier mon profil", edit_user_registration_path, class: "dropdown-item" %></li>
+            <%# <li>= link_to "Another action", "#", class: "dropdown-item"</li> %>
+            <li><%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %></li>
+          </ul>
+          <% end %>
       </ul>
     </div>
   </div>
