@@ -1,35 +1,61 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+  <div class="bg-light p-5 rounded mt-5 mb-5">    
+    <h2>Vos informations de compte (et de société)</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+      <div class="form-inputs">
+      <div class="d-flex justify-content-between mt-5 mb-5">
+          <%= f.input :first_name, :label => "Prénom" %>
+          <%= f.input :last_name, :label => "Nom" %>
+      </div>
+      <div class="d-flex justify-content-between mt-5 mb-5">
+          <%= f.input :email, required: true, autofocus: true, :label => "Mail" %>
+          <%= f.input :phone, :label => "Numéro de téléphone" %>
+          <%= f.input :tva, :label => "Numéro de TVA (optionnel)" %>
+      </div>
+      <div class="d-flex justify-content-between mt3">
+          <%= f.input :siret, :label => "Votre numéro Siret" %>
+          <%= f.input :address, :label => "Votre adresse de facturation" %>
+          <%= f.input :photo, as: :file, :label => "Votre logo de facturation" %>
+      </div>
+      <div class="d-flex justify-content-center mt-5 mb-5">
+        <div class="col-4">
+          <%= f.input :infos_payment, :label => "Indiquer votre IBAN / BIC de votre société" %>
+        </div>
+        <div class="col-4">
+          <%= f.input :conditions, :label => "Quelles sont vos conditions de paiement ?" %>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between mt-5 mb-5">
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <%= f.input :password,
+                      hint: "Laisser vide pour ne pas le changer",
+                      required: false,
+                      input_html: { autocomplete: "new-password" }, :label => "Nouveau mot de passe" %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password" }, :label => "Confirmer votre mot de passe" %>
+          <%= f.input :current_password,
+                      hint: "Votre mot de passe actuel",
+                      required: true,
+                      input_html: { autocomplete: "current-password" }, :label => "Mot de passe actuel" %>
+      </div>
+      </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <div class="form-actions">
+        <%= f.button :submit, "Mettre à jour", class: "btn btn-success m-5" %>
+      </div>
     <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
+    <h3>Annuler mon compte</h3>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+    <p>Supprimer vos information ? <br><br>
+    <%= link_to "Suprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p><br><br>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+    <%= link_to "Retour", :back %>
+    </div>
+</div>

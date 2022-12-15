@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_15_000002) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_15_120611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,12 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_000002) do
   create_table "invoices", force: :cascade do |t|
     t.integer "amount", default: 0
     t.string "my_company_name"
-    t.string "my_compagny_address"
-    t.integer "my_company_phone"
     t.string "my_company_email"
-    t.integer "my_company_siret"
     t.string "my_company_tva"
-    t.text "my_company_paiement"
     t.string "customer_name"
     t.string "customer_address"
     t.string "customer_email"
@@ -93,6 +89,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_000002) do
     t.string "address"
     t.string "phone"
     t.string "siret"
+    t.string "infos_payment"
+    t.string "conditions"
+    t.string "tva"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
