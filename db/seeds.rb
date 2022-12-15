@@ -8,7 +8,8 @@
 require 'faker'
 puts 'Clean database'
 Lorum.destroy_all
-User.destroy_all
+test_user = User.find_by(email: 'test@test.com')
+test_user.destroy
 puts 'Clean ok'
 sleep(2)
 puts 'Create lorums ipsum texting'
