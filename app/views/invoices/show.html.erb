@@ -36,15 +36,15 @@
         <div class="d-flex justify-content-center w-100">
             <h5>Date de facturation :</h5><span style="margin-left: 1%;"><b><%= @invoice.date %></b></span><br><br>
         </div>
-           <b>Titre de la facture : </b><%= @invoice.description %><br><br><br>
-           Détail de facturation : <%= @invoice.prestation %><br>
+           <b><h4>Titre de la facture : </h4></b><br><i><%= @invoice.description.camelcase %></i><br><br><br>
+          <h4> Détail de la prestation :</h4> <i><%= @invoice.prestation %></i><br>
         <div class="d-flex align-items-end flex-column w-20">
            <b>Taux de tva :</b> <%= @invoice.invoice_tva %>%<br>
            <b>Montant total TTC :</b>
             <% total_tva = (@invoice.amount * @invoice.invoice_tva) / 100 %>
             <%= total_tva + @invoice.amount %>€
         </div>
-           <h4>Détails de facturation :</h4><br><br>
+           <h4>Informations de paiements :</h4><br><br>
             <%= current_user.infos_payment %><br><br>
             <h4>Conditions de paiements :</h4><br><br>
             <%= current_user.conditions %>
