@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/exit', as: 'rails_admin'
   resources :coordinates
   devise_for :users
   resources :invoices
