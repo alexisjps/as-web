@@ -51,6 +51,7 @@ body {
            <b><h4>Titre de la facture : </h4></b><br><i><%= @invoice.description.camelcase %></i><br><br><br>
           <h4> Détail de la prestation :</h4> <i><%= @invoice.prestation %></i><br>
         <div class="d-flex align-items-end flex-column w-20">
+           <b>Montant HT :</b> <%= @invoice.amount %>€<br>
            <b>Taux de tva :</b> <%= @invoice.invoice_tva %>%<br>
            <b>Montant total TTC :</b>
             <% total_tva = (@invoice.amount * @invoice.invoice_tva) / 100 %>
@@ -60,5 +61,8 @@ body {
             <%= current_user.infos_payment %><br><br>
             <h4>Conditions de paiements :</h4><br><br>
             <%= current_user.conditions %>
-    </div>
+            <div class="mt-3 d-flex justify-content-center">
+              <a href="https://astephan.digital/">Facture éditée par <b>AS WEB</b></a>
+            </div>
+  </div>
 </div>

@@ -42,6 +42,7 @@
            <b><h4>Titre de la facture : </h4></b><br><i><%= @invoice.description.camelcase %></i><br><br><br>
           <h4> Détail de la prestation :</h4> <i><%= @invoice.prestation %></i><br>
         <div class="d-flex align-items-end flex-column w-20">
+           <b>Montant HT :</b> <%= @invoice.amount %>€<br>
            <b>Taux de tva :</b> <%= @invoice.invoice_tva %>%<br>
            <b>Montant total TTC :</b>
             <% total_tva = (@invoice.amount * @invoice.invoice_tva) / 100 %>
