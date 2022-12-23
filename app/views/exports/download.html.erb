@@ -1,0 +1,54 @@
+<div class="container">
+  <%= link_to "Retour à mes factures", invoices_path, class: "btn btn-dark m-3" %>
+  <p style="color: green"><%= notice %></p>
+
+  <div class="form-inputs p-5 mb-5" style="background-color: #fff; border: 1px solid #F4F4F4;">
+        <div class="d-flex justify-content-center">
+          <h5> Facture n°:  <%= @invoice.invoice_number %> </h5>
+        </div>
+        <div class="facture-informations">
+          <div class="my-infos">
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "rounded mb-5" %>
+            <% end %>
+          <h4>Facture éditée par :</h4>
+            <%= current_user.first_name %> <%= current_user.last_name %><br>
+          <%= current_user.address %><br>
+          <%= current_user.phone %><br>
+          <%= current_user.email %><br>
+          <% if current_user.tva != nil %>
+            N° TVA :<%= current_user.tva %><br>
+          <% end %>
+          Siret : <%= current_user.siret %>
+          </div>
+          <div class="d-flex align-items-end flex-column">
+          <h4> Facture adressée à :</h4><br>
+              <%= @invoice.customer_name %><br>
+              <%= @invoice.customer_address %><br>
+            Siret : <%= @invoice.customer_siret %><br><br>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center w-100">
+            <h5>Date de facturation :</h5><span style="margin-left: 1%;"><b><%= @invoice.date %></b></span><br><br>
+        </div>
+           <b><h4>Titre de la facture : </h4></b><br><i><%= @invoice.description.camelcase %></i><br><br><br>
+          <h4> Détail de la prestation :</h4> <i><%= @invoice.prestation %></i><br>
+        <div class="d-flex align-items-end flex-column w-20">
+           <b>Taux de tva :</b> <%= @invoice.invoice_tva %>%<br>
+           <b>Montant total TTC :</b>
+            <% total_tva = (@invoice.amount * @invoice.invoice_tva) / 100 %>
+            <%= total_tva + @invoice.amount %>€
+        </div>
+           <h4>Informations de paiements :</h4><br><br>
+            <%= current_user.infos_payment %><br><br>
+            <h4>Conditions de paiements :</h4><br><br>
+            <%= current_user.conditions %>
+    </div>
+  <form class="d-flex justify-content-end">
+    <input class="btn btn-info text-white" id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer ma facture" />
+  </form>
+  <div class="d-flex">
+    <%= button_to "Supprimer ma facture", @invoice, method: :delete, class: "btn btn-danger m-3" %>
+    <%= link_to "Modifier me facture", edit_invoice_path(@invoice), class: "btn btn-primary m-3" %>
+  </div>
+</div>

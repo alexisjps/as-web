@@ -21,6 +21,8 @@ gem "puma", "~> 5.0"
 # Use authentification
 gem "devise"
 
+# Create pdf for invoice
+gem 'prawn'
 # Use cloudinary
 gem "cloudinary"
 
