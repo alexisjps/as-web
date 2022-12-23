@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/exit', as: 'rails_admin'
   resources :coordinates
   devise_for :users
-  resources :invoices
+  resources :invoices do
+    get 'export', to: 'invoices#export'
+  end
+  
   resources :tickets
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # sitemap

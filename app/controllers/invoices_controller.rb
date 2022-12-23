@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoice, only: %i[ show edit update destroy ]
+  before_action :set_invoice, only: %i[ show edit update destroy]
 
   # GET /invoices or /invoices.json
   def index
@@ -16,6 +16,16 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new
   end
 
+  def export
+    @invoice = Invoice.where(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = ReportPdf.new(@invoice)
+          send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+        end
+      end
+  end
   # GET /invoices/1/edit
   def edit
   end
