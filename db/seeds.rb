@@ -9,7 +9,9 @@ require 'faker'
 puts 'Clean database'
 Lorum.destroy_all
 test_user = User.find_by(email: 'test@test.com')
-test_user.destroy
+if test_user != nil
+    test_user.destroy
+end
 puts 'Clean ok'
 sleep(2)
 puts 'Create lorums ipsum texting'
