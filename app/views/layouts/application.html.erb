@@ -15,7 +15,7 @@
     <%= render "/shared/navbar" %>
     <script type="text/javascript">
     function imprimer_page(){
-      window.print();
+      window.print()
     }
     </script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
@@ -24,8 +24,9 @@
 
   <body>
     <%= yield %>
-  <%= render "shared/footer" %>
+    </div>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <%= render "shared/footer" %>
   </body>
 </html>
