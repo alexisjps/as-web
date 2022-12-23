@@ -13,7 +13,7 @@ if test_user != nil
     test_user.destroy
 end
 puts 'Clean ok'
-sleep(2)
+sleep(1)
 puts 'Create lorums ipsum texting'
 numero = 1
 200.times do
