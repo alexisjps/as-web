@@ -2,15 +2,24 @@
 .footer.mt-5 {
     display: none;
 }
+.navbar.navbar-expand-sm.navbar-light.navbar-lewagon.fixed-top {
+    display: none;
+}
+body {
+    margin-top: 10px;
+}
+.container {
+    min-width: 1000px;
+}
 </style>
+<script type="text/javascript">
+    object = document.querySelector("body");
+    object.addEventListener("load", window.print());
+</script>
 <div class="container">
- <form class="d-flex justify-content-start">
-    <%= link_to "Retour à mes factures", invoices_path, class: "btn btn-dark m-3" %>
-    <%= link_to "Imprimer ma facture", print_path(@invoice), target: "_blank", class: "btn btn-success m-3" %>
-  </form>
   <p style="color: green"><%= notice %></p>
 
-  <div class="form-inputs p-5 mb-5" style="background-color: #fff; border: 1px solid #F4F4F4;">
+  <div class="form-inputs p-5 mb-5" style="background-color: #fff; border: 4px solid #F4F4F4;">
         <div class="d-flex justify-content-center">
           <h5> Facture n°:  <%= @invoice.invoice_number %> </h5>
         </div>
@@ -19,20 +28,20 @@
             <% if current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "rounded mb-5" %>
             <% end %>
-            <h4>Facture éditée par :</h4>
-            <p><%= current_user.first_name %> <%= current_user.last_name %><br></p>
-            <p><%= current_user.address %><br></p>
-            <p><%= current_user.phone %><br></p>
-            <p><%= current_user.email %><br></p>
-            <% if current_user.tva != nil %>
-            <p>  N° TVA :<%= current_user.tva %><br></p>
-            <% end %>
-            <p> Siret : <%= current_user.siret %></p>
+          <h4>Facture éditée par :</h4>
+            <%= current_user.first_name %> <%= current_user.last_name %><br>
+          <%= current_user.address %><br>
+          <%= current_user.phone %><br>
+          <%= current_user.email %><br>
+          <% if current_user.tva != nil %>
+            N° TVA :<%= current_user.tva %><br>
+          <% end %>
+          Siret : <%= current_user.siret %>
           </div>
           <div class="d-flex align-items-end flex-column">
           <h4> Facture adressée à :</h4><br>
-              <p><%= @invoice.customer_name %><br></p>
-              <p><%= @invoice.customer_address %><br></p>
+              <%= @invoice.customer_name %><br>
+              <%= @invoice.customer_address %><br>
             Siret : <%= @invoice.customer_siret %><br><br>
           </div>
         </div>
@@ -52,8 +61,4 @@
             <h4>Conditions de paiements :</h4><br><br>
             <%= current_user.conditions %>
     </div>
-  <div class="d-flex">
-    <%= button_to "Supprimer ma facture", @invoice, method: :delete, class: "btn btn-danger m-3" %>
-    <%= link_to "Modifier me facture", edit_invoice_path(@invoice), class: "btn btn-primary m-3" %>
-  </div>
 </div>

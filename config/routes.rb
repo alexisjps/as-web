@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :coordinates
   devise_for :users
   resources :invoices
+  get 'print/:id', to: 'invoices#show_another', as: 'print'
   resources :tickets
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # sitemap
@@ -12,5 +13,4 @@ Rails.application.routes.draw do
   get "/lorum-resultat", to: "lorums#lorum_result"
   get "emojis", to: "emojis#index"
   get 'mot-de-passe', to: 'pages#password'
-  get '/actualites-technologies', to: 'pages#actu'
 end
