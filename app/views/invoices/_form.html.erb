@@ -24,10 +24,12 @@
         </div>
         <div class="informations-client">
           <div class="d-flex align-items-end flex-column">
-              <%= f.input :customer_name, :label => "Nom du client / Dénomination" %>
-              <%= f.input :customer_address, :label => "Adresse" %>
-              <%= f.input :customer_siret, :label => "N° siret" %>
+              <%#= f.input :customer_name, :label => "Nom du client / Dénomination" %>
+              <%#= f.input :customer_address, :label => "Adresse" %>
+              <%#= f.input :customer_siret, :label => "N° siret" %>
+              <%= f.select(:client, Client.all.collect {|c| [c.first_name, c.last_name]}, :prompt => 'Select') %>
           </div>
+          <%= raise %>
         </div>
       </div>
       <div class="d-flex justify-content-center w-100">

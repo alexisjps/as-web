@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/exit', as: 'rails_admin'
   resources :coordinates
   devise_for :users
+  resources :clients
   resources :invoices
   get 'print/:id', to: 'invoices#show_another', as: 'print'
   resources :tickets

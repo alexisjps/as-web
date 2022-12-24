@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_16_141303) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_24_180445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_141303) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "compagny_siret"
+    t.string "compagny_address"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
   create_table "coordinates", force: :cascade do |t|
     t.float "longitude"
     t.float "latitude"
@@ -52,21 +65,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_141303) do
 
   create_table "invoices", force: :cascade do |t|
     t.integer "amount", default: 0
-    t.string "my_company_name"
-    t.string "my_company_email"
-    t.string "my_company_tva"
-    t.string "customer_name"
-    t.string "customer_address"
-    t.string "customer_email"
-    t.string "customer_siret"
     t.date "date"
     t.string "description"
     t.integer "invoice_number"
     t.text "prestation"
-    t.integer "invoice_tva"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "client_id"
+    t.string "invoice_tva"
+    t.index ["client_id"], name: "index_invoices_on_client_id"
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
@@ -107,5 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_141303) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "clients", "users"
+  add_foreign_key "invoices", "clients"
   add_foreign_key "invoices", "users"
 end
