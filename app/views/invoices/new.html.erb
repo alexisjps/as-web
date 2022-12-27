@@ -3,8 +3,9 @@
     display: none;
 }
 </style>
-<div class="container">
+<div class="container d-flex justify-content-between">
   <h1>Créer ma facture</h1>
+  <%= link_to "Ajouter un client", new_client_path, class: "btn btn-primary m-3" %>
 </div>
 
 <%= render "form", invoice: @invoice %>
