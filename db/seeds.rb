@@ -8,10 +8,17 @@
 require 'faker'
 puts 'Clean database'
 Lorum.destroy_all
+
 test_user = User.find_by(email: 'test@test.com')
 if test_user != nil
     test_user.destroy
 end
+
+sanofi = Client.find_by(email: 'contact@sanofi.fr')
+if sanofi != nil
+    sanofi.destroy
+end
+
 puts 'Clean ok'
 sleep(1)
 puts 'Create lorums ipsum texting'
@@ -26,4 +33,6 @@ end
 puts 'Lorum ipsum created'
 puts 'user creating'
 User.create!(first_name: 'Alexis', last_name: "Stephan", email: 'test@test.com', password: '123456', siret: "123456789", phone: '0646820375', address: '12 rue lesueur Paris')
+sleep(1)
+Client.create!(first_name: 'Sanofi', last_name: "LTD", email: 'contact@sanofi.fr', phone: '0646820375', compagny_address: '46 AV DE LA GRANDE ARMEE 75017 PARIS', compagny_siret: '395030844', user_id: 1)
 puts 'user created'
