@@ -14,29 +14,31 @@
 
 
 <div class="container p-5">
-  <% @invoices.each do |invoice| %>
-    <div class="cardingspace">
-      <% if invoice.user_id == current_user.id %>
-        <div class="card text-center">
-          <div class="card-header">
-            Facture n°:  <%= invoice.invoice_number %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Facture pour : <%= invoice.client.first_name %></h5>
-            <p class="card-text"><%= invoice.description %>,<b> Total de votre facture :</b>
-              <% total_tva = (invoice.amount * invoice.invoice_tva.to_f) / 100 %>
-              <%= total_tva + invoice.amount %>€</p></p>
-            <div class="d-flex justify-content-between">
-              <%= button_to "Supprimer", invoice, method: :delete, class: "btn btn-danger" %>
-              <%= link_to "Aperçu", invoice_path(invoice), class: "btn btn-success" %>
-              <%= link_to "Modifier", edit_invoice_path(invoice), class: "btn btn-primary" %>
+<div class="d-flex flex-wrap">
+    <% @invoices.each do |invoice| %>
+      <div class="cardingspace">
+        <% if invoice.user_id == current_user.id %>
+          <div class="card text-center m-1">
+            <div class="card-header">
+              Facture n°:  <%= invoice.invoice_number %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Facture pour : <%= invoice.client.first_name %></h5>
+              <p class="card-text"><%= invoice.prestation %><br><b> Total de votre facture :</b>
+                <% total_tva = (invoice.amount * invoice.invoice_tva.to_f) / 100 %>
+                <%= total_tva + invoice.amount %>€</p></p>
+              <div class="d-flex justify-content-between">
+                <%= button_to "Supprimer", invoice, method: :delete, class: "btn btn-danger" %>
+                <%= link_to "Aperçu", invoice_path(invoice), class: "btn btn-success" %>
+                <%= link_to "Modifier", edit_invoice_path(invoice), class: "btn btn-primary" %>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+            Facture créée le : <%= invoice.created_at %>
             </div>
           </div>
-          <div class="card-footer text-muted">
-          Facture créée le : <%= invoice.created_at %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
