@@ -1,11 +1,15 @@
 <div class="container">
     <%= simple_form_for @client do |f| %>
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :email %>
-        <%= f.input :phone %>
-        <%= f.input :compagny_address %>
-        <%= f.input :compagny_siret %>
-        <%= f.submit %>
+    <div class="d-flex flex-wrap space">        
+        <%= f.input :first_name, label: "Prénom" %>
+        <%= f.input :last_name, label: "Nom" %>
+        <%= f.input :email, label: "Mail" %>
+        <%= f.input :phone, label: "Téléphone" %>
+    </div>
+     <div class="d-flex flex-wrap space">   
+        <%= f.input :compagny_address, label: "Adresse" %>
+        <%= f.input :compagny_siret, label: "Siret" %>
+    </div>
+        <%= f.button :submit, class: "btn btn-flat", value: "Créer" %>
     <% end %>
 </div>
