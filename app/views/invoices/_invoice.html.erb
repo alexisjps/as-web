@@ -27,7 +27,7 @@
               <p class="card-text"><%= invoice.prestation %><br><b> Total de votre facture :</b>
                 <% total_tva = (invoice.amount * invoice.invoice_tva.to_f) / 100 %>
                 <%= total_tva + invoice.amount %>€</p></p>
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between spacing-mob">
                 <%= button_to "Supprimer", invoice, method: :delete, class: "btn btn-danger" %>
                 <%= link_to "Aperçu", invoice_path(invoice), class: "btn btn-success" %>
                 <%= link_to "Modifier", edit_invoice_path(invoice), class: "btn btn-primary" %>
