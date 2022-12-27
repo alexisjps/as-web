@@ -24,4 +24,11 @@
   
   .btn-ghost:hover {
     opacity: 1;
-  }
+}
+
+@media (max-width: 800px) {
+    .spacing-mob{
+            justify-content: space-between !important;
+            column-gap: 1%;
+    }
+}

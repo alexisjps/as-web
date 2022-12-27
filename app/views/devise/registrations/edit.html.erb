@@ -10,25 +10,25 @@
           <%= f.input :first_name, :label => "Prénom" %>
           <%= f.input :last_name, :label => "Nom" %>
       </div>
-      <div class="d-flex justify-content-between mt-5 mb-5">
+      <div class="d-flex justify-content-between mt-5 mb-5 space-mobile">
           <%= f.input :email, required: true, autofocus: true, :label => "Mail" %>
           <%= f.input :phone, :label => "Numéro de téléphone" %>
           <%= f.input :tva, :label => "Numéro de TVA (optionnel)" %>
       </div>
-      <div class="d-flex justify-content-between mt3">
+      <div class="d-flex justify-content-between mt3 space-mobile">
           <%= f.input :siret, :label => "Votre numéro Siret" %>
           <%= f.input :address, :label => "Votre adresse de facturation" %>
           <%= f.input :photo, as: :file, :label => "Votre logo de facturation" %>
       </div>
-      <div class="d-flex justify-content-center mt-5 mb-5">
-        <div class="col-4">
+      <div class="d-flex justify-content-center mt-5 mb-5 space-mobile">
+        <div class="col-lg-4">
           <%= f.input :infos_payment, :label => "Indiquer votre IBAN / BIC de votre société" %>
         </div>
-        <div class="col-4">
-          <%= f.input :conditions, :label => "Quelles sont vos conditions de paiement ?" %>
+        <div class="col-lg-4">
+          <%= f.input :conditions, :label => "Vos conditions de paiement ?" %>
         </div>
       </div>
-      <div class="d-flex justify-content-between mt-5 mb-5">
+      <div class="d-flex justify-content-between mt-5 mb-5 space-mobile">
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
@@ -53,7 +53,7 @@
 
     <h3>Annuler mon compte</h3>
 
-    <p>Supprimer vos information ? <br><br>
+    <p>Supprimer vos informations ? <br><br>
     <%= link_to "Suprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p><br><br>
 
     <%= link_to "Retour", :back %>
