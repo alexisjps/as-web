@@ -24,10 +24,12 @@
         </div>
         <div class="informations-client">
           <div class="d-flex align-items-end flex-column">
-              <%= f.input :customer_name, :label => "Nom du client / Dénomination" %>
-              <%= f.input :customer_address, :label => "Adresse" %>
-              <%= f.input :customer_siret, :label => "N° siret" %>
+              <%#= f.input :customer_name, :label => "Nom du client / Dénomination" %>
+              <%#= f.input :customer_address, :label => "Adresse" %>
+              <%#= f.input :customer_siret, :label => "N° siret" %>
+               <%= f.input :client_id, collection: @clients, label_method: :first_name %>
           </div>
+          <%#= raise %>
         </div>
       </div>
       <div class="d-flex justify-content-center w-100">

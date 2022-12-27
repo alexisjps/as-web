@@ -1,0 +1,17 @@
+<div class="container">
+    <% @clients.each do |client| %>
+        <% if client.user == current_user %><br>
+            <%= client.first_name %><br>
+            <%= client.last_name %><br>
+            <%= client.compagny_siret %><br>
+            <%= client.compagny_address %><br>
+            <%= client.phone %><br>
+            <%= client.email %><br>
+            <%= link_to "Modifier la fiche cliente", edit_client_path(client), class: "btn btn-info" %>
+            <%= link_to "Supprimer le client", client, method: :delete, class: "btn btn-danger"%>
+        <% end %>
+    <% end %>
+    <div class="d-flex">
+        <%= link_to "Ajouter un client", new_client_path, class: "btn btn-primary" %>
+    </div>
+</div>
