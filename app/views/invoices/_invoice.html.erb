@@ -22,9 +22,9 @@
             Facture n°:  <%= invoice.invoice_number %>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Facture pour : <%= invoice.customer_name %></h5>
+            <h5 class="card-title">Facture pour : <%= invoice.client.first_name %></h5>
             <p class="card-text"><%= invoice.description %>,<b> Total de votre facture :</b>
-              <% total_tva = (invoice.amount * invoice.invoice_tva) / 100 %>
+              <% total_tva = (invoice.amount * invoice.invoice_tva.to_f) / 100 %>
               <%= total_tva + invoice.amount %>€</p></p>
             <div class="d-flex justify-content-between">
               <%= button_to "Supprimer", invoice, method: :delete, class: "btn btn-danger" %>
