@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoice, only: %i[ show edit update destroy show_another]
+  before_action :set_invoice, only: %i[ show edit update destroy show_another send_invoice]
 
   # GET /invoices or /invoices.json
   def index
@@ -35,6 +35,7 @@ class InvoicesController < ApplicationController
       if @invoice.save
         format.html { redirect_to invoice_url(@invoice), notice: "Invoice was successfully created." }
         format.json { render :show, status: :created, location: @invoice }
+        InvoiceMailer.send_invoice(@invoice).deliver_now
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @invoice.errors, status: :unprocessable_entity }
@@ -64,7 +65,7 @@ class InvoicesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
