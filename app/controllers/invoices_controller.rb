@@ -33,6 +33,7 @@ class InvoicesController < ApplicationController
     @invoice.user = @user
     respond_to do |format|
       if @invoice.save
+        InvoiceMailer.with(invoice: @invoice).new_invoice_email.deliver_later
         format.html { redirect_to invoice_url(@invoice), notice: "Invoice was successfully created." }
         format.json { render :show, status: :created, location: @invoice }
       else

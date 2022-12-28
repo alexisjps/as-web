@@ -1,0 +1,67 @@
+<style>
+.footer.mt-5 {
+    display: none;
+}
+.navbar.navbar-expand-sm.navbar-light.navbar-lewagon.fixed-top {
+    display: none;
+}
+body {
+    margin-top: 10px;
+}
+.container {
+    min-width: 1000px;
+}
+</style>
+<script type="text/javascript">
+    object = document.querySelector("body");
+    object.addEventListener("load", window.print());
+</script>
+<div class="container">
+
+  <div class="form-inputs p-5 mb-5" style="background-color: #fff; border: 4px solid #F4F4F4;">
+        <div class="d-flex justify-content-center">
+          <h5> Facture n°:  <%= @invoice.invoice_number %> </h5>
+        </div>
+        <div class="facture-informations">
+          <div class="my-infos">
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "rounded mb-5" %>
+            <% end %>
+          <h4>Facture éditée par :</h4>
+            <%= current_user.first_name %> <%= current_user.last_name %><br>
+          <%= current_user.address %><br>
+          <%= current_user.phone %><br>
+          <%= current_user.email %><br>
+          <% if current_user.tva != nil %>
+            N° TVA :<%= current_user.tva %><br>
+          <% end %>
+          Siret : <%= current_user.siret %>
+          </div>
+          <div class="d-flex align-items-end flex-column">
+          <h4> Facture adressée à :</h4><br>
+              <%= @invoice.client.first_name %><br>
+              <%= @invoice.client.compagny_address %><br>
+            Siret : <%= @invoice.client.compagny_siret %><br><br>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center w-100">
+            <h5>Date de facturation :</h5><span style="margin-left: 1%;"><b><%= @invoice.date %></b></span><br><br>
+        </div>
+           <b><h4>Titre de la facture : </h4></b><br><i><%= @invoice.description.camelcase %></i><br><br><br>
+          <h4> Détail de la prestation :</h4> <i><%= @invoice.prestation %></i><br>
+        <div class="d-flex align-items-end flex-column w-20">
+           <b>Montant HT :</b> <%= @invoice.amount %>€<br>
+           <b>Taux de tva :</b> <%= @invoice.invoice_tva %>%<br>
+           <b>Montant total TTC :</b>
+            <% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
+            <%= total_tva + @invoice.amount %>€
+        </div>
+           <h4>Informations de paiements :</h4><br><br>
+            <%= current_user.infos_payment %><br><br>
+            <h4>Conditions de paiements :</h4><br><br>
+            <%= current_user.conditions %>
+            <div class="mt-3 d-flex justify-content-center">
+              <a href="https://astephan.digital/">Facture éditée par <b>AS WEB</b></a>
+            </div>
+  </div>
+</div>

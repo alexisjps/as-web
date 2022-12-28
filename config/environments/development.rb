@@ -17,6 +17,21 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
   
+  # Config mailer
+  config.action_mailer.delivery_method = :smtp
+  host = 'example.com' #replace with your own url
+  config.action_mailer.default_url_options = { host: host }
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.hostinger.com",
+    :port                 => 465,
+    :user_name            => 'invoice@astephan.digital',
+    :password             => ENV["MAILLING"],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
   # Config devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Enable/disable caching. By default caching is disabled.
