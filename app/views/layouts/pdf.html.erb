@@ -1,0 +1,17 @@
+<!--  file: rails-generate-pdf/views/layotus/pdf.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PDFs - Ruby on Rails</title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <style>
+    html {
+      -webkit-print-color-adjust: exact;
+    }
+  </style>
+</head>
+<body class="pdf_layout">
+    <%= yield %>
+</body>
+</html>
