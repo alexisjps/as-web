@@ -1,0 +1,39 @@
+<div style="padding: 50px;">
+  <div>
+    <h1 style= "font-family: sans-serif; margin:0 0 4px;font-size:21px;line-height:23px;font-weight:400;color:#333">Bonjour <%= @invoice.client.first_name %> <%= @invoice.client.last_name %>
+    </h1>
+  </div>
+  <br>
+  <p style="margin:0;font-size:15px;line-height:21px;color:#54595f;font-family: sans-serif;">Vous trouverez ci-joint la facture <strong style="font-weight:bold"><%= @invoice.description %></strong> du <strong style="font-weight:bold"><%=l(@invoice.created_at,format:"%A %d %B %Y") %></strong> d'un montant de <strong style="font-weight:bold"><%= @invoice.amount %> € HT</strong> pour la prestation <strong style="font-weight:bold"><%= @invoice.description %></strong>.</p>
+  <br>
+  <p style="margin:0;font-size:15px;line-height:21px;color:#54595f;font-family: sans-serif;">Je vous souhaite bonne réception,</p>
+  <p style="margin:0;font-size:15px;line-height:21px;color:#54595f;font-family: sans-serif;">Dans l'attente du règlement de celle-ci, je reste à votre disposition.</p>
+  <br>
+  <br>
+  <p style="margin:0;font-size:15px;line-height:21px;color:#54595f;font-family: sans-serif;">Cordialement,</p>
+  <br>
+  <br>
+  <div class="d-flex justify-content-between" style="display:inline-flex;padding-bottom:10px;margin-top:8px; width:480px">
+    <% if @invoice.user.photo.attached?  %>
+      <div class="user-mail-pic" style="margin-right: 20px; max-width:35%">
+        <%= cl_image_tag @invoice.user.photo.key, height: 65, width: 65, crop: :fill, style:"border-radius: 50%; vertical-align:initial; max-width:120px;" %>
+      </div>
+    <% end %>
+    <div class="d-flex flex-column justify-content-between" style="width:65%; max-width:65%">
+      <span style="font-size:12px;color:#263859;font-family:sans-serif;padding:0px;margin:0px;font-weight:bold;"><%= @invoice.user.first_name %> <%= @invoice.user.last_name %></span>
+      <br>
+      <p style="border-top:1px solid #01395f;line-height:0px; margin-top: 5px;margin-bottom: 5px; width: 70%;opacity: 0.8;"></p>
+      <span style="font-size:12px; font-family: sans-serif;color: #263859; font-weight: bold; opacity: 0.8;"><%= @invoice.user.email %></span>
+      <br>
+      <span style="font-size:12px; font-family: sans-serif;color: #263859; font-weight: bold; opacity: 0.8;">SIRET : <%= @invoice.user.siret %></span>
+      <br>
+      <span style="font-size:12px; font-family: sans-serif;color: #263859; font-weight: bold; opacity: 0.8;"><%= @invoice.user.address %></span>
+      <br>
+      <span style="font-size:12px; font-family: sans-serif;color: #263859; font-weight: bold; opacity: 0.8;"><%= @invoice.user.phone %>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+

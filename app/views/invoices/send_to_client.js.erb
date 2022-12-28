@@ -1,0 +1,1 @@
+$('#invoice-div-<%= @invoice.id %>').html("<%= escape_javascript(render partial: 'invoices/invoices_index_partial/invoice_uniq', locals: { invoice: @invoice})%>");

@@ -7,6 +7,7 @@
  <form class="d-flex justify-content-start">
     <%= link_to "Retour à mes factures", invoices_path, class: "btn btn-dark m-3" %>
     <%= link_to "Imprimer ma facture", print_path(@invoice), target: "_blank", class: "btn btn-success m-3" %>
+    <%= link_to 'Envoyer', send_to_client_from_show_invoice_path(invoice), method: :post, class: 'btn btn-primary m-3' %>
   </form>
   <p style="color: green"><%= notice %></p>
 

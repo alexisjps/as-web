@@ -1,0 +1,14 @@
+
+Bonjour <%= @invoice.client.first_name %> <%= @invoice.client.last_name %>
+
+Vous trouverez ci-joint la facture <%= @invoice.invoice_number %> du  <%= @invoice.created_at %> d'un montant de <%= @invoice.amount  %> € HT pour la prestation <%= @invoice.description  %>.
+
+Je vous souhaite bonne réception,
+Dans l'attente du règlement de celle-ci, je reste à votre disposition.
+
+Cordialement,
+<%= @invoice.user.first_name %> <%= @invoice.user.last_name %>
+Courriel : <%= @invoice.user.email %>
+SIRET : <%= @invoice.user.siret %>
+Adresse : <%= @invoice.user.address %>
+Numéro : <%= @invoice.user.phone %>

@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   resources :clients
   resources :invoices
   get 'print/:id', to: 'invoices#show_another', as: 'print'
+  resources :invoices do
+    member do
+      post :send_to_client
+      post :send_to_client_form_show
+    end
+  end
   resources :tickets
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # sitemap

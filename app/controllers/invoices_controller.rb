@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoice, only: %i[ show edit update destroy show_another]
+  before_action :set_invoice, only: %i[ show edit update destroy show_another, :send_to_client, :send_to_client_from_show]
 
   # GET /invoices or /invoices.json
   def index
@@ -65,6 +65,18 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def send_to_client
+    InvoiceMailer.send_to_client(@invoice).deliver_later(wait: 10.seconds)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def send_to_client_form_show
+    InvoiceMailer.send_to_client(@invoice).deliver_later(wait: 10.seconds)
+    redirect_to invoices_path, notice: "L'email a bien été envoyé"
+  end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice

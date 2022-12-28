@@ -24,6 +24,8 @@ gem "devise"
 # Use cloudinary
 gem "cloudinary"
 
+# Transform html to pdf
+gem 'grover'
 # Geocode
 gem "geocoder"
 
@@ -61,6 +63,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 # Font awesome
 gem "font-awesome-sass", "~> 6.1"
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
