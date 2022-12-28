@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :invoices, dependent: :destroy
   has_many :clients, dependent: :destroy
   has_one_attached :photo
+  belongs_to :cloud
 end

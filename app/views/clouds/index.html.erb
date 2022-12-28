@@ -1,0 +1,7 @@
+<% if @cloud.photos.attached? %>
+    <% @clouds.photos.each do |cloud| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+<% else %>
+<%= link_to "Ajouter des images", new_cloud_path, class: "btn btn-primary m-3" %>
+<% end %>
