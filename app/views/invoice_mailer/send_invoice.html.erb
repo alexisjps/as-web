@@ -6,7 +6,7 @@
             <tr>
               <td class="email-masthead">
                 <% if @user.photo.attached? %>
-                    <%= cl_image_tag @user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "my-6 w-16" %>
+                    <%= cl_image_tag @user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "img-av" %>
                 <% end %>
               </td>
             </tr>
