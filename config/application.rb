@@ -18,5 +18,20 @@ module GenerateLorumIp
     #
     config.time_zone = "Europe/Dublin"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    config.action_mailer.delivery_job = "ActionMailer::MailDeliveryJob"
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = {
+      :host => 'localhost:3000',
+      :protocol => 'http'
+    }
+    config.action_mailer.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :port => 465,
+    :user_name => 'alexis@astephan.digital',
+    :password => ENV['MAILPASSWORD'],
+    :authentication => 'plain',
+    :enable_starttls_auto => true
+    }
   end
 end
