@@ -1,69 +1,152 @@
-<div class="container">
-    <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "my-6 w-16" %>
-    <% end %>
-<div class="space-y-4 mb-6">
-    <h1 class="text-4xl fw-800">Facture reçu par : <%= @user.first_name %> <%= @user.last_name %></h1>
-    <p>Date de facturation : <%= @invoice.date %></p>
-    <table class="p-2 w-full">
-    <tbody>
-        <tr>
-        <td><h4>Facture éditée par :</h4></td>
-        <td class="text-right"><h4>Facture adressée à :</h4></td>
-        </tr>
-        <tr>
-        <td><%= @user.first_name %>, <%= @user.last_name %></td>
-        <td class="text-right"><%= @invoice.client.first_name %></td>
-        </tr>
-        <tr>
-        <td><%= @user.address %></td>
-        <td class="text-right"><%= @invoice.client.compagny_address %></td>
-        </tr>
-        <tr>
-        <td><%= @user.phone %></td>
-        <td class="text-right"><%= @invoice.client.compagny_siret %></td>
-        </tr>
-        <tr>
-        <td><%= @user.email %></td>
-        <td class="text-right"></td>
-        </tr>
-        <tr>
-        <td><%= @user.siret %></td>
-        <td class="text-right"></td>
-        </tr>
-        <tr>
-        <td class="fw-700 border-top"><p><% if @user.tva != nil %></p>
-        <p>N° TVA :<%= @user.tva %><br></p></td>
-        <% end %>
-        <td class="fw-700 text-right border-top"></td>
-        </tr>
-    </tbody>
+<span class="preheader">Facture de : <%= @user.first_name %></span>
+    <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td align="center">
+          <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+              <td class="email-masthead">
+                <% if @user.photo.attached? %>
+                    <%= cl_image_tag @user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "my-6 w-16" %>
+                <% end %>
+              </td>
+            </tr>
+            <!-- Email Body -->
+            <tr>
+              <td class="email-body" width="570" cellpadding="0" cellspacing="0">
+                <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <!-- Body content -->
+                  <tr>
+                    <td class="content-cell">
+                      <div class="f-fallback">
+                        <h1>Bonjour <%= @invoice.client.first_name %>,</h1>
+                        <p>Merci pour votre confiance, cette facture a été générée par <a href="https://as-web.website" target="_blank">AS WEB</a></p>
+                        <table class="attributes" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                          <tr>
+                            <td class="attributes_content">
+                              <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                                <tr>
+                                  <td class="attributes_item">
+                                    <span class="f-fallback">
+                                        <strong>Total dû :</strong> <%= @invoice.amount %> € HT<br>
+                                    </span>
+                                    <span class="f-fallback">
+                                        <%= @invoice.client.first_name %>, <%= @invoice.client.last_name %><br>
+                                    </span>
+                                    <span class="f-fallback">
+                                        <%= @invoice.client.compagny_address %><br>
+                                    </span>
+                                    <span class="f-fallback">
+                                        <%= @invoice.client.email %><br>
+                                    </span>
+                                    <span class="f-fallback">
+                                       Siret n° : <%= @invoice.client.compagny_siret %><br>
+                                    </span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="attributes_item">
+                                    <span class="f-fallback">
+                                        <strong>Date de réception :</strong> <%= @invoice.date %>
+                                    </span>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- Action -->
+                        <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                          <tr>
+                            <td align="center">
+                              <!-- Border based button
+           https://litmus.com/blog/a-guide-to-bulletproof-buttons-in-email-design -->
+                              <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                <tr>
+                                  <td align="center">
+                                    <a href="mailto:<%= @user.email %>" class="f-fallback button button--green" target="_blank">Me contacter</a>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <table class="purchase" width="100%" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td>
+                              <h3>Facture n° <%= @invoice.invoice_number %></h3>
+                            </td>
+                            <td>
+                              <h3 class="align-right"><%= @invoice.updated_at %></h3>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">
+                              <table class="purchase_content" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <th class="purchase_heading" align="left">
+                                    <p class="f-fallback">Description</p>
+                                  </th>
+                                  <th class="purchase_heading" align="right">
+                                    <p class="f-fallback">Montant</p>
+                                  </th>
+                                </tr>
+                                <%# {{#each invoice_details}} %>
+                                <tr>
+                                  <td width="80%" class="purchase_item"><span class="f-fallback"><%= @invoice.prestation %></span></td>
+                                  <td class="align-right" width="20%" class="purchase_item"><span class="f-fallback"><%= @invoice.amount %></span></td>
+                                </tr>
+                                <tr>
+                                  <td width="70%" class="purchase_footer" valign="middle">
+                                    <p class="f-fallback purchase_total purchase_total--label">Total</p>
+                                  </td>
+                                  <td width="20%" class="purchase_footer" valign="middle">
+                                  <% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
+                                    <p class="f-fallback purchase_total"><%= total_tva + @invoice.amount %> € TTC</p>
+                                  </td>
+                                  <td width="10%" class="purchase_footer">
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <p class="f-fallback purchase_total purchase_total--label">TVA : <%= total_tva %> €</p><br>
+                        <p><b>Informations de paiement :</b> <%= @user.infos_payment %>.</p>
+                        <p><b>Conditions de paiement :</b>
+                          <br><%= @user.conditions %>.</p></p>
+                        <!-- Sub copy -->
+                        <table class="body-sub" role="presentation">
+                          <tr>
+                            <td>
+                              <p class="f-fallback sub">Facture éditée avec le logiciel en ligne <a href="https://as-web.website">AS WEB</a></p>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <tr>
+                    <td class="content-cell" align="center">
+                      <p class="f-fallback sub align-center">
+                        <%= @user.first_name %> <%= @user.last_name %>
+                        <br><%= @user.address %>
+                        <br><%= @user.phone %>
+                        <br><%= @user.email %>
+                        <br><%= @user.siret %>
+                        <br><%= @user.tva %>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
     </table>
-<div class="card rounded-3xl px-4 py-8 p-lg-10 mb-6">
-    <h3 class="text-center"><%= @invoice.description.camelcase %></h3>
-    <p class="text-center text-muted">Facture n°:  <%= @invoice.invoice_number %></p>
-    <table class="p-2 w-full">
-    <tbody>
-        <tr>
-        <td><%= @invoice.prestation %></td>
-        <td class="text-right">Montant : <%= @invoice.amount %>€</td>
-        </tr>
-        <tr>
-        <td>Taux de TVA :</td>
-        <td class="text-right"><%= @invoice.invoice_tva %></td>
-        </tr>
-        <tr>
-        <td class="fw-700 border-top">Montant TTC:</td>
-        <% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
-        <td class="fw-700 text-right border-top"><%= total_tva + @invoice.amount %>€</td>
-        </tr>
-    </tbody>
-    </table>
-    <hr class="my-6">
-    <p> Information de paiements : <%= @user.infos_payment %></p>
-    <br>
-    <p>Conditions de paiements : <%= @user.conditions %></p>
-        <br>
-        <br>
-    <p>Facture générée par <a href="https://as-web.website/">AS WEB</a></p>
-</div>
