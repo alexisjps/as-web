@@ -22,7 +22,7 @@ module GenerateLorumIp
     config.action_mailer.delivery_job = "ActionMailer::MailDeliveryJob"
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_url_options = {
-      :host => 'localhost:3000',
+      :host => 'as-web.website',
       :protocol => 'http'
     }
     config.action_mailer.smtp_settings = {
