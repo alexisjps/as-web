@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :clients
   resources :invoices
-  get 'print/:id', to: 'invoices#show_another', as: 'print'
   resources :tickets
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # sitemap
-  # Defines the root path route ("/")
+
+  get "invoices/:id/send", to: "invoices#send_mail", as: "send_mail"
+  get 'print/:id', to: 'invoices#show_another', as: 'print'
+
   root "lorums#home"
   get "/lorum", to: "lorums#index"
   get "/lorum-resultat", to: "lorums#lorum_result"

@@ -24,7 +24,13 @@ class InvoicesController < ApplicationController
   def edit
     @clients = Client.all
   end
-
+  # GET /invoices/1/send
+  def send_mail
+    @invoice = Invoice.find(params[:id])
+    @user = current_user
+    InvoiceMailer.send_invoice(@invoice).deliver_now
+    redirect_to invoice_path(@invoice)
+  end
   # POST /invoices or /invoices.json
   def create
     @clients = Client.all
