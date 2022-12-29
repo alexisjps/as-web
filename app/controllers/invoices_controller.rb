@@ -28,7 +28,7 @@ class InvoicesController < ApplicationController
   def send_mail
     @invoice = Invoice.find(params[:id])
     @user = current_user
-    InvoiceMailer.send_invoice(@invoice).deliver_now
+    InvoiceMailer.send_invoice(@invoice).deliver_later
     redirect_to invoice_path(@invoice)
   end
   # POST /invoices or /invoices.json
