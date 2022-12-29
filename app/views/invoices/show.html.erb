@@ -6,7 +6,8 @@
 <div class="container">
  <form class="d-flex justify-content-start">
     <%= link_to "Retour à mes factures", invoices_path, class: "btn btn-dark m-3" %>
-    <%= link_to "Imprimer ma facture", print_path(@invoice), target: "_blank", class: "btn btn-success m-3" %>
+    <%= link_to "Enregistrer (PDF)", print_path(@invoice), target: "_blank", class: "btn btn-warning text-white m-3" %>
+    <%= link_to "Envoyer ma facture", send_mail_path(@invoice), class: "btn btn-success m-3" %>
   </form>
   <p style="color: green"><%= notice %></p>
 
