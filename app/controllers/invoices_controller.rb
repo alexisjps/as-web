@@ -27,6 +27,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/send
   def send_mail
     @invoice = Invoice.find(params[:id])
+    @user = current_user
     InvoiceMailer.send_invoice(@invoice).deliver_now
     redirect_to invoice_path(@invoice)
   end
