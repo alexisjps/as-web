@@ -27,19 +27,19 @@
                                 <tr>
                                   <td class="attributes_item">
                                     <span class="f-fallback">
-                                        <strong>Total dû :</strong> <%= @invoice.amount %> € HT<br>
+                                        <strong>Total dû :</strong> <%= @invoice.amount %> € HT<br /><br />
                                     </span>
                                     <span class="f-fallback">
-                                        <%= @invoice.client.first_name %>, <%= @invoice.client.last_name %><br>
+                                        <%= @invoice.client.first_name %>, <%= @invoice.client.last_name %><br><br>
                                     </span>
                                     <span class="f-fallback">
-                                        <%= @invoice.client.compagny_address %><br>
+                                       <%= @invoice.client.compagny_address %><br><br>
                                     </span>
                                     <span class="f-fallback">
-                                        <%= @invoice.client.email %><br>
+                                       <%= @invoice.client.email %><br><br>
                                     </span>
                                     <span class="f-fallback">
-                                       Siret n° : <%= @invoice.client.compagny_siret %><br>
+                                      Siret n° : <%= @invoice.client.compagny_siret %><br><br>
                                     </span>
                                   </td>
                                 </tr>
