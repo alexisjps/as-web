@@ -30,6 +30,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
     @user = current_user
     InvoiceMailer.send_invoice(@invoice).deliver_now
+    Invoice.update(@invoice.id, status: true)
     redirect_to invoices_path
     flash.alert = "Facture envoyée à #{@invoice.client.first_name}"
   end
