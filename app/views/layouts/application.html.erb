@@ -22,6 +22,9 @@
     <%# end print invoice %>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
+    <%# if current_user.sign_in_count == 0 %>
+    <%#= render 'shared/educational_modal' %>
+    <%# end %>
   </head>
 
   <body>
