@@ -7,9 +7,9 @@
   <p style="color: green"><%= notice %></p>
 
   <h1>Vos factures</h1>
-  <div class="-flex">
-    <%= link_to "Nouvelle facture", new_invoice_path, class:"btn btn-success mb-5 text-white" %>
-    <%= link_to "Mes clients", clients_path, class:"btn btn-info mb-5 text-white" %>
+  <div class="d-flex">
+    <%= link_to "Nouvelle facture", new_invoice_path, class:"btn btn-success m-2 text-white" %>
+    <%= link_to "Mes clients", clients_path, class:"btn btn-info m-2 text-white" %>
   </div>
   <div id="invoices">
     <%= render "invoice" %>
