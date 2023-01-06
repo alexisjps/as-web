@@ -5,7 +5,7 @@
     </div>
     <div class="d-flex flex-wrap">
         <% @clients.each do |client| %>
-        <div class="clients-cards col-3">
+        <div class="clients-cards col-md-4">
             <% if client.user == current_user %><br>
                 <%= client.first_name %><br>
                 <%= client.last_name %><br>
