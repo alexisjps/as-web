@@ -30,6 +30,9 @@ gem "geocoder"
 # Zeitwerk
 # gem 'zeitwerk', '~> 2.6'
 
+# Use pdf
+gem 'prawn'
+
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 

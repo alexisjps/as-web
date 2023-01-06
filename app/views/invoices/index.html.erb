@@ -8,8 +8,8 @@
 
   <h1>Vos factures</h1>
   <div class="-flex">
-    <%= link_to "Nouvelle facture", new_invoice_path, class:"btn btn-success mb-5 text-white" %>
-    <%= link_to "Mes clients", clients_path, class:"btn btn-info mb-5 text-white" %>
+    <%= link_to "Nouvelle facture", new_invoice_path, class:"btn btn-success mb-5 text-white p-1" %>
+    <%= link_to "Mes clients", clients_path, class:"btn btn-info mb-5 text-white p-1" %>
   </div>
   <div id="invoices">
     <%= render "invoice" %>

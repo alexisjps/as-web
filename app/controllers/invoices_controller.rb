@@ -9,6 +9,13 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/1 or /invoices/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@invoice)
+        send_data pdf.render, filename: "invoice.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
   # GET /print/1 
   def show_another
