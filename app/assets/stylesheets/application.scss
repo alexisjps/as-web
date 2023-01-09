@@ -1,5 +1,10 @@
+// External librairies
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "flatpickr/dist/flatpickr";
+@import "flatpickr/dist/themes/airbnb";
+
+// Custom styles
 @import "banner";
 @import "cards_boot";
 @import "container-custom";

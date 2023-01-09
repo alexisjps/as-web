@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-center w-100">
-          <%= f.input :date, :label => "Date de facturation" %>
+          <%= f.input :date, :label => "Date de facturation", as: :string, input_html: { data: { controller: 'flatpickr' } } %>
       </div>
           <%= f.input :description, :label => "Titre de la facture" %>
           <%= f.input :prestation, :label => "Prestations à facturer :" %>
