@@ -10,8 +10,5 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import ToastBoostrapController from "./toast_boostrap_controller"
-application.register("toast-boostrap", ToastBoostrapController)
-
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
