@@ -10,6 +10,7 @@
   <div class="d-flex">
     <%= link_to "Nouveau Devis", new_quote_path, class:"btn btn-success m-2 text-white" %>
     <%= link_to "Mes clients", clients_path, class:"btn btn-info m-2 text-white" %>
+    <%= link_to "Mes factures", invoices_path, class:"btn btn-primary m-2 text-white" %>
   </div>
     <% if current_user.infos_payment == nil || current_user.conditions == nil %>
       <br><br>
