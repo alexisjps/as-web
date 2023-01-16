@@ -1,0 +1,21 @@
+<style>
+.footer.mt-5 {
+    display: none;
+}
+</style>
+<div class="container">  
+  <p style="color: green"><%= notice %></p>
+
+  <h1>Vos Devis</h1>
+  <div class="d-flex">
+    <%= link_to "Nouveau Devis", new_quote_path, class:"btn btn-success m-2 text-white" %>
+    <%= link_to "Mes clients", clients_path, class:"btn btn-info m-2 text-white" %>
+  </div>
+    <% if current_user.infos_payment == nil || current_user.conditions == nil %>
+      <br><br>
+      <p style="color: red;"> Vous n'avez pas configuré votre compte de facturation. <%= link_to "Cliquez ici", edit_user_registration_path %> pour le faire.</p>
+    <% end %>
+  <div id="quotes">
+    <%= render "quote" %>
+  </div>
+</div>

@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :clients
   resources :invoices
+  resources :quotes
   resources :tickets
 
   get "invoices/:id/send", to: "invoices#send_mail", as: "send_mail"
   get 'print/:id', to: 'invoices#show_another', as: 'print'
+  get 'print_quote/:id', to: 'quotes#show_another', as: 'print_quote'
 
   root "lorums#home"
   get "/lorum", to: "lorums#index"

@@ -1,0 +1,16 @@
+<style>
+.footer.mt-5 {
+    display: none;
+}
+</style>
+<div class="container">
+  <h1>Modifier ma facture</h1>
+</div>
+<%= render "form", invoice: @invoice %>
+
+<br>
+
+<div>
+  <%= link_to "Voir ma facture", @invoice %> |
+  <%= link_to "Retour à mes factures", invoices_path %>
+</div>
