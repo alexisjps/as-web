@@ -1,0 +1,17 @@
+<style>
+.footer.mt-5 {
+    display: none;
+}
+</style>
+<div class="container d-flex justify-content-between">
+  <h1>Créer mon devis</h1>
+  <%= link_to "Ajouter un client", new_client_path, class: "btn btn-primary m-3" %>
+</div>
+
+<%= render "form", quote: @quote %>
+
+<br>
+
+<div>
+  <%= link_to "Retour à mes devis", quotes_path %>
+</div>

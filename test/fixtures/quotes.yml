@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  date: 2023-01-16
+  description: MyString
+  quote_number: MyString
+  prestation: MyText
+  invoice_tva: MyString
+  status: false
+
+two:
+  amount: 1
+  date: 2023-01-16
+  description: MyString
+  quote_number: MyString
+  prestation: MyText
+  invoice_tva: MyString
+  status: false

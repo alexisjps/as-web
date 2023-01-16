@@ -1,0 +1,99 @@
+<style>
+.footer.mt-5 {
+    display: none;
+}
+.navbar.navbar-expand-sm.navbar-light.navbar-lewagon.fixed-top {
+    display: none;
+}
+body {
+    margin-top: 10px;
+}
+.container {
+    min-width: 1000px;
+}
+</style>
+<script type="text/javascript">
+    object = document.querySelector("body");
+    object.addEventListener("load", window.print());
+</script>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <div class="invoice-box">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="title">
+									  <% if current_user.photo.attached? %>
+                      <%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "rounded mb-5" %>
+                    <% end %>
+								</td>
+
+								<td>
+									Facture n° #: <%= @invoice.invoice_number %><br />
+									Créée: <%= @invoice.date %><br />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td>
+									<%= current_user.first_name %> <%= current_user.last_name %><br />
+									<%= current_user.address %><br />
+                  <%= current_user.phone %><br />
+                  <%= current_user.email %><br />
+									N° Siret : <%= current_user.siret %><br />
+                  <%= current_user.tva if current_user.tva != nil %><br />
+                  <p class="mt-3 text-center"><b>Titre de la facture : <%= @invoice.description.camelcase %></b></p>
+								</td>
+
+								<td>
+									<%= @invoice.client.first_name %> <%= @invoice.client.last_name %><br />
+									<%= @invoice.client.email %><br />
+									<%= @invoice.client.compagny_address %>
+                  <%= @invoice.client.compagny_siret if @invoice.client.compagny_siret != nil %>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="heading">
+					<td>Informations de paiements :</td>
+
+					<td></td>
+				</tr>
+
+				<tr class="details">
+					<td><%= current_user.infos_payment %></td>
+
+					<td></td>
+				</tr>
+
+				<tr class="heading">
+					<td>Description</td>
+
+					<td>Prix HT</td>
+				</tr>
+
+				<tr class="item">
+					<td><%= @invoice.prestation %></td>
+
+					<td><%= @invoice.amount %>€ HT</td>
+				</tr>
+
+				<tr class="total">
+          <% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
+					<td> Total TVA : <%= total_tva %>€</td>
+					<td>Total: <%= total_tva + @invoice.amount %>€ TTC</td>
+				</tr>
+          <td style="margin-top: 20px!important;"><%= current_user.conditions %></td>
+			</table>
+		</div>
+</div>

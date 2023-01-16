@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_30_120347) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_16_133639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_120347) do
     t.integer "number"
   end
 
+  create_table "quotes", force: :cascade do |t|
+    t.integer "amount"
+    t.date "date"
+    t.string "description"
+    t.string "quote_number"
+    t.text "prestation"
+    t.string "quote_tva"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_quotes_on_client_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.string "name"
     t.text "comment"
@@ -119,4 +135,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_30_120347) do
   add_foreign_key "clients", "users"
   add_foreign_key "invoices", "clients"
   add_foreign_key "invoices", "users"
+  add_foreign_key "quotes", "clients"
+  add_foreign_key "quotes", "users"
 end

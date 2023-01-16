@@ -1,0 +1,61 @@
+<style>
+.card-header{
+  background-color: transparent;
+
+}
+#taille{
+  height: 100px!important;
+}
+.card {
+    border-radius: 10px;
+    height: auto!important;
+}
+button.btn.btn-danger {
+    padding: 3px;
+}
+a.btn.btn-primary {
+    padding: 3px;
+}
+a.btn.btn-success {
+    padding: 3px;
+}
+</style>
+
+
+<div class="container p-5">
+<div class="d-flex flex-wrap">
+    <% @quotes.reverse_each do |quote| %>
+      <div class="cardingspace">
+        <% if quote.user_id == current_user.id %>
+          <div class="card text-center m-1">
+            <div class="card-header">
+              Devis N°:  <%= quote.quote_number %>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Devis à : <%= quote.client.first_name %></h4>
+              <p class="card-text"><%= quote.description %><br></p>
+              <b> Total :</b>
+                <% total_tva = (quote.amount * quote.quote_tva.to_f) / 100 %>
+                <%= total_tva + quote.amount %>€ TTC</p>
+              <div class="d-flex justify-content-between spacing-mob">
+                <%= link_to "Aperçu", quote_path(quote), class: "btn btn-primary" %>
+                <%= button_to "Supprimer", quote, method: :delete, class: "btn btn-danger" %>
+                <% if quote.status == false %>
+                <%= link_to "Envoyer", send_mail_path(quote), class: "btn btn-success" %>
+                <% end %>
+              </div>
+            </div>
+            <% if quote.status == true %>
+                <p class="mt-3" style="color: green;"><b>Devis envoyée</b></p>
+            <% else %>
+                <p class="mt-3" style="color: red;"><b>Devis non envoyée</b></p>
+            <% end %>
+            <div class="card-footer text-muted">
+              Devis créée le : <%= quote.created_at %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
