@@ -39,6 +39,7 @@
           <%= f.input :prestation, :label => "Prestations à facturer :" %>
       <div class="d-flex align-items-end flex-column w-20">
           <%= f.input :invoice_tva, value: "0%", collection: ["0%", "20%", "10%", "5.5%"], :label => "Taux de tva" %>
+          <%= f.input :discount, :label => "Promotion : %" %>
           <%= f.input :amount, :label => "Total HT" %>
       </div>
           <h4>Informations de paiements :</h4><br>
