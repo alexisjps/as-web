@@ -89,7 +89,7 @@ body {
 				</tr>
 
 				<tr class="total">
-					<td> Promotion :<b><%= @invoice.discount %>%</b></td>
+					<td> Promotion : <b><%= @invoice.discount %>%</b></td>
 					<% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
 						<td> Total TVA : <%= total_tva %>€<br>
 						<% with_tva = (total_tva + @invoice.amount) %>
