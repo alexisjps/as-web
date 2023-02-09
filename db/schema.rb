@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_133639) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_214656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_133639) do
     t.bigint "client_id"
     t.string "invoice_tva"
     t.boolean "status", default: false
+    t.integer "discount"
     t.index ["client_id"], name: "index_invoices_on_client_id"
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
