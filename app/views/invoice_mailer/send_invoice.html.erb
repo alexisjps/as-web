@@ -1,4 +1,5 @@
 <span class="preheader">Facture de : <%= @user.first_name %></span>
+<% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
     <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
       <tr>
         <td align="center">
@@ -27,7 +28,7 @@
                                 <tr>
                                   <td class="attributes_item">
                                     <span class="f-fallback">
-                                        <strong>Total dû :</strong> <%= @invoice.amount %> € HT<br /><br />
+                                        <strong>Total dû :</strong> <%= @invoice.amount  + total_tva - @invoice.discount %> € TTC<br /><br />
                                     </span>
                                     <span class="f-fallback">
                                         <%= @invoice.client.first_name %>, <%= @invoice.client.last_name %><br><br>
@@ -96,11 +97,10 @@
                                 </tr>
                                 <tr>
                                   <td width="70%" class="purchase_footer" valign="middle">
-                                    <p class="f-fallback purchase_total purchase_total--label">Total</p>
+                                    <p class="f-fallback purchase_total purchase_total--label">Total : </p>
                                   </td>
                                   <td width="20%" class="purchase_footer" valign="middle">
-                                  <% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
-                                    <p class="f-fallback purchase_total"><%= total_tva + @invoice.amount %> € TTC</p>
+                                    <p class="f-fallback purchase_total"><%= total_tva + @invoice.amount - @invoice.discount %> € TTC</p>
                                   </td>
                                   <td width="10%" class="purchase_footer">
                                   </td>
@@ -110,6 +110,7 @@
                           </tr>
                         </table>
                         <p class="f-fallback purchase_total purchase_total--label">TVA : <%= total_tva %> €</p><br>
+                        <p>Promotion : <b><%= @invoice.discount %>%</b></p>
                         <p><b>Informations de paiement :</b> <%= @user.infos_payment %>.</p>
                         <p><b>Conditions de paiement :</b>
                           <br><%= @user.conditions %>.</p></p>
