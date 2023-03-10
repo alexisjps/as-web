@@ -9,6 +9,8 @@ require 'faker'
 puts 'Clean database'
 Lorum.destroy_all
 
+Ticket.destroy_all
+
 test_user = User.find_by(email: 'test@test.com')
 if test_user != nil
     test_user.destroy

@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :invoices, dependent: :destroy
   has_many :clients, dependent: :destroy
   has_many :quotes, dependent: :destroy
-  has_many :tickets, dependent: :destroy
+  # has_many :tickets, dependent: :destroy
   has_one_attached :photo
 end
