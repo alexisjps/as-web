@@ -31,7 +31,7 @@ class CoordinatesController < ApplicationController
 
     respond_to do |format|
       if @coordinate.save
-        format.html { redirect_to coordinate_url(@coordinate), notice: "Coordinate was successfully created." }
+        format.html { redirect_to coordinate_url(@coordinate), notice: "Coordinate création réussie." }
         format.json { render :show, status: :created, location: @coordinate }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class CoordinatesController < ApplicationController
   def update
     respond_to do |format|
       if @coordinate.update(coordinate_params)
-        format.html { redirect_to coordinate_url(@coordinate), notice: "Coordinate was successfully updated." }
+        format.html { redirect_to coordinate_url(@coordinate), notice: "Coordinate mise à jour faite" }
         format.json { render :show, status: :ok, location: @coordinate }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,7 +58,7 @@ class CoordinatesController < ApplicationController
     @coordinate.destroy
 
     respond_to do |format|
-      format.html { redirect_to coordinates_url, notice: "Coordinate was successfully destroyed." }
+      format.html { redirect_to coordinates_url, notice: "Coordinate suppression réussie" }
       format.json { head :no_content }
     end
   end

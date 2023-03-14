@@ -18,7 +18,7 @@ class CoordinatesTest < ApplicationSystemTestCase
     fill_in "Longitude", with: @coordinate.longitude
     click_on "Create Coordinate"
 
-    assert_text "Coordinate was successfully created"
+    assert_text "Coordinate création réussie"
     click_on "Back"
   end
 

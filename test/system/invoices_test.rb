@@ -33,7 +33,7 @@ class InvoicesTest < ApplicationSystemTestCase
     fill_in "Prestation", with: @invoice.prestation
     click_on "Create Invoice"
 
-    assert_text "Invoice was successfully created"
+    assert_text "Invoice création réussie"
     click_on "Back"
   end
 
