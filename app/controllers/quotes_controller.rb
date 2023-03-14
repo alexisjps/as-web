@@ -17,12 +17,12 @@ class QuotesController < ApplicationController
     # GET /quotes/new
     def new
         @quote = Quote.new
-        @clients = Client.all
+        @clients = Client.where(user_id: current_user.id)
     end
     
     # GET /quotes/1/edit
     def edit
-        @clients = Client.all
+        @clients = Client.where(user_id: current_user.id)
     end
     
     # GET /quotes/1/send

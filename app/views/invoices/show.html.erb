@@ -69,7 +69,7 @@ a.btn.btn-success {
 									</td>
 
 									<td>
-										<%= @invoice.client.first_name %> <%= @invoice.client.last_name %><br />
+										<%= @invoice.client.first_name %> <%= @invoice.client.denomination %><br />
 										<%= @invoice.client.email %><br />
 										<%= @invoice.client.compagny_address %>
 					<%= @invoice.client.compagny_siret if @invoice.client.compagny_siret != nil %>
