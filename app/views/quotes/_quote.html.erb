@@ -32,7 +32,12 @@ a.btn.btn-success {
               Devis N°:  <%= quote.quote_number %>
             </div>
             <div class="card-body">
-              <h4 class="card-title">Devis à : <%= quote.client.first_name %></h4>
+              <h4 class="card-title">Devis à : 
+              <% if quote.client.denomination == nil %></h4>
+              <%= quote.client.first_name %>
+              <% else %>
+              <%= quote.client.denomination %>
+              <% end %>
               <p class="card-text"><%= quote.description %><br></p>
               <b> Total :</b>
                 <% total_tva = (quote.amount * quote.quote_tva.to_f) / 100 %>
