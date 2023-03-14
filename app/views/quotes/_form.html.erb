@@ -5,7 +5,7 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
     <div class="form-inputs">
       <div class="d-flex justify-content-center">
-          <%= f.input :quote_number, :label => "Numéro de facturation" %>
+          <%= f.input :quote_number, :label => "Numéro de devis" %>
       </div>
       <div class="facture-informations">
         <div class="my-infos">
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-center w-100">
-          <%= f.input :date, :label => "Date de facturation", as: :string, input_html: { data: { controller: 'flatpickr' } } %>
+          <%= f.input :date, :label => "Date du devis", as: :string, input_html: { data: { controller: 'flatpickr' } } %>
       </div>
           <%= f.input :description, :label => "Titre du devis" %>
           <%= f.input :prestation, :label => "Prestations du devis :" %>
