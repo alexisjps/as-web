@@ -44,7 +44,7 @@ class ClientsController < ApplicationController
         @client = Client.find(params[:id])
     end
     def client_params
-        params.require(:client).permit(:first_name, :last_name, :email, :compagny_siret, :compagny_address, :phone, :address)
+        params.require(:client).permit(:first_name, :denomination, :email, :compagny_siret, :compagny_address, :phone, :address)
     end
     def set_user
         @user = current_user.id

@@ -31,7 +31,7 @@
                                         <strong>Total dû :</strong> <%= @invoice.amount  + total_tva - @invoice.discount %> € TTC<br /><br />
                                     </span>
                                     <span class="f-fallback">
-                                        <%= @invoice.client.first_name %>, <%= @invoice.client.last_name %><br><br>
+                                        <%= @invoice.client.first_name %>, <%= @invoice.client.denomination %><br><br>
                                     </span>
                                     <span class="f-fallback">
                                        <%= @invoice.client.compagny_address %><br><br>

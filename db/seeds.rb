@@ -37,5 +37,5 @@ puts 'user creating'
 alexis = User.create!(first_name: 'Alexis', last_name: "Stephan", email: 'test@test.com', password: '123456', siret: "123456789", phone: '0646820375', address: '12 rue lesueur Paris')
 sleep(1)
 p 'client creating'
-Client.create!(first_name: 'Sanofi', last_name: "LTD", email: 'contact@sanofi.fr', phone: '0145949394', compagny_address: '46 AV DE LA GRANDE ARMEE 75017 PARIS', compagny_siret: '395030844', user_id: alexis.id)
+Client.create!(first_name: 'Sanofi', last_name: "LTD", denomination: "Sanofi", email: 'contact@sanofi.fr', phone: '0145949394', compagny_address: '46 AV DE LA GRANDE ARMEE 75017 PARIS', compagny_siret: '395030844', user_id: alexis.id)
 puts 'user created'
