@@ -34,19 +34,19 @@ a.btn.btn-success {
             <div class="card-body">
               <h4 class="card-title">Devis à : 
               <% if quote.client.denomination == nil %></h4>
-              <%= quote.client.first_name %>
-              <% else %>
-              <%= quote.client.denomination %>
+                <%= quote.client.first_name %>
+                <% else %>
+                <%= quote.client.denomination %>
               <% end %>
               <p class="card-text"><%= quote.description %><br></p>
               <b> Total :</b>
-                <% total_tva = ((quote.amount * quote.quote_tva.to_f) / 100) %>
+                <% total_tva = (quote.amount * quote.quote_tva.to_f) / 100 %>
                 <%= total_tva + quote.amount %>€ TTC</p>
               <div class="d-flex justify-content-between spacing-mob">
                 <%= link_to "Aperçu", quote_path(quote), class: "btn btn-primary" %>
                 <%= button_to "Supprimer", quote, method: :delete, class: "btn btn-danger" %>
                 <% if quote.status == false %>
-                <%= link_to "Envoyer", send_mail_path(quote), class: "btn btn-success" %>
+                  <%= link_to "Envoyer", send_mail_path(quote), class: "btn btn-success" %>
                 <% end %>
               </div>
             </div>

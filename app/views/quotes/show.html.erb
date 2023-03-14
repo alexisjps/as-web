@@ -101,7 +101,7 @@ a.btn.btn-success {
 					</tr>
 
 					<tr class="total">
-			<% total_tva = (@quote.amount * @quote.quote_tva.to_f) / 100 %>
+			<% total_tva = ((@quote.amount * @quote.quote_tva.to_f) / 100) %>
 						<td> Total TVA : <%= total_tva %>€</td>
 						<td>Total: <%= total_tva + @quote.amount %>€ TTC</td>
 					</tr>
