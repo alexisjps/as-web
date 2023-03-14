@@ -18,7 +18,7 @@ class TicketsTest < ApplicationSystemTestCase
     fill_in "Name", with: @ticket.name
     click_on "Create Ticket"
 
-    assert_text "Ticket was successfully created"
+    assert_text "Ticket création réussie"
     click_on "Back"
   end
 
