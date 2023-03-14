@@ -40,7 +40,7 @@ a.btn.btn-success {
               <% end %>
               <p class="card-text"><%= quote.description %><br></p>
               <b> Total :</b>
-                <% total_tva = (quote.amount * quote.quote_tva.to_f) / 100 %>
+                <% total_tva = ((quote.amount * quote.quote_tva.to_f) / 100) %>
                 <%= total_tva + quote.amount %>€ TTC</p>
               <div class="d-flex justify-content-between spacing-mob">
                 <%= link_to "Aperçu", quote_path(quote), class: "btn btn-primary" %>
