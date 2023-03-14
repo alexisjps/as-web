@@ -28,7 +28,7 @@ a.btn.btn-success {
     <%= link_to "Mes Devis", quotes_path, class: "btn btn-dark m-2 btn-mob" %>
     <%= link_to "Enregistrer", print_quote_path(@quote), target: "_blank", class: "btn btn-warning text-white m-2" %>
     <%#= link_to "Envoyer", send_mail_path(@quote), class: "btn btn-success m-2" %>
-    <%= link_to "Modifier", edit_quote_path(@quote), class: "btn btn-primary m-2" %>
+    <%= link_to "Modifier", edit_quote_path(@quote), class: "btn btn-primary m-2 p-2" %>
 	<%= button_to "Supprimer", @quote, method: :delete, class: "btn btn-danger m-2" %>
   </form>
 	<div class="invoice-box">
