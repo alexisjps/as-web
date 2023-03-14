@@ -17,7 +17,8 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
-    @clients = Client.all
+    @user = current_user
+    @clients = Client.where(user_id: @user.id)
   end
 
   # GET /invoices/1/edit
