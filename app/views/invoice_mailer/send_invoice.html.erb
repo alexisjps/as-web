@@ -26,9 +26,15 @@
                             <td class="attributes_content">
                               <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
                                 <tr>
+                                <% if @invoice.discount == nil %>
+						                        <% @invoice.discount = 0 %>
+					                      <% end %>
                                   <td class="attributes_item">
                                     <span class="f-fallback">
-                                        <strong>Total dû :</strong> <%= @invoice.amount  + total_tva - @invoice.discount %> € TTC<br /><br />
+                                    <% with_tva = (total_tva + @invoice.amount) %>
+                                    <% first_step = (with_tva.to_i * @invoice.discount) / 100 %>
+                                    <% second_step = with_tva - first_step %>
+                                        <strong>Total dû :</strong> <%= second_step %> € TTC<br /><br />
                                     </span>
                                     <span class="f-fallback">
                                         <%= @invoice.client.first_name %>, <%= @invoice.client.denomination %><br><br>
@@ -100,7 +106,7 @@
                                     <p class="f-fallback purchase_total purchase_total--label">Total : </p>
                                   </td>
                                   <td width="20%" class="purchase_footer" valign="middle">
-                                    <p class="f-fallback purchase_total"><%= total_tva + @invoice.amount - @invoice.discount %> € TTC</p>
+                                    <p class="f-fallback purchase_total"><%= second_step %> € TTC</p>
                                   </td>
                                   <td width="10%" class="purchase_footer">
                                   </td>
