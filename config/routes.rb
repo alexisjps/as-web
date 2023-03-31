@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :coordinates
   devise_for :users
   resources :clients
-  resources :invoices
+  resources :invoices do
+    member do
+      put :store_on_cloudinary
+    end
+  end
+  
   resources :quotes
   resources :tickets
 

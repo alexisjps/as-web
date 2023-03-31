@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Invoice PDF</title>
+  <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+  <%= wicked_pdf_javascript_include_tag 'pdf' %>
+</head>
+<body>
+  <%= yield %>
+</body>
+</html>

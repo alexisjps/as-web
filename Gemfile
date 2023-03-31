@@ -27,6 +27,11 @@ gem "cloudinary"
 # Geocode
 gem "geocoder"
 
+
+# Convert an invoice and quote to PDF
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 # Zeitwerk
 # gem 'zeitwerk', '~> 2.6'
 

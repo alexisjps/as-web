@@ -26,14 +26,14 @@ a.btn.btn-success {
 <div class="container">
  <form class="d-flex justify-content-center">
     <%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2 btn-mob" %>
-    <%#= link_to "Enregistrer", print_path(@invoice), target: "_blank", class: "btn btn-warning text-white m-2" %>
-    <%= link_to "Voir en pdf",invoice_path(@invoice, format: :pdf), target: "_blank", class: "btn btn-warning text-white m-2" %>
+    <%= link_to "Enregistrer", print_path(@invoice), target: "_blank", class: "btn btn-warning text-white m-2" %>
     <%= link_to "Envoyer", send_mail_path(@invoice), class: "btn btn-success m-2" %>
     <%= link_to "Modifier", edit_invoice_path(@invoice), class: "btn btn-primary m-2" %>
 	<%= button_to "Supprimer", @invoice, method: :delete, class: "btn btn-danger m-2" %>
   </form>
   <p style="color: green"><%= notice %></p>
-
+<p>Invoice ID: <%= invoice.id %></p>
+<p>Client: <%= invoice.client.name %></p>
 	<div class="invoice-box">
 				<table cellpadding="0" cellspacing="0">
 					<tr class="top">
