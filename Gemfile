@@ -27,6 +27,10 @@ gem "cloudinary"
 # Geocode
 gem "geocoder"
 
+
+# use matrix for debug
+gem 'matrix'
+
 # Zeitwerk
 # gem 'zeitwerk', '~> 2.6'
 
