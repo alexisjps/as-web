@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :coordinates
   devise_for :users
   resources :clients
-  resources :invoices
+  resources :invoices do
+    member do
+      get 'download_pdf'
+    end
+  end
   resources :quotes
   resources :tickets
 
