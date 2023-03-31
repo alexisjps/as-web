@@ -30,6 +30,10 @@ gem "geocoder"
 # Zeitwerk
 # gem 'zeitwerk', '~> 2.6'
 
+# Use pdf for invoices and quotes
+gem 'prawn'
+gem 'prawn-table'
+
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 

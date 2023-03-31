@@ -1,6 +1,13 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_invoice, only: %i[ show edit update destroy show_another]
+  # My method for pdf
+
+  def download_pdf
+    @invoice = Invoice.find(params[:id])
+    pdf = InvoicePdf.new(@invoice, current_user)
+    send_data pdf.render, filename: "facture-#{@invoice.invoice_number}.pdf", type: 'application/pdf', disposition: 'inline'
+  end
 
   # GET /invoices or /invoices.json
   def index
