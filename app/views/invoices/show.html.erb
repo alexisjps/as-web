@@ -24,13 +24,25 @@ a.btn.btn-success {
 }
 </style>
 <div class="container">
- <form class="d-flex justify-content-center">
-    <%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2 btn-mob" %>
-    <%= link_to "Enregistrer", download_pdf_invoice_path(@invoice), target: "_blank", class: "btn btn-warning text-white m-2" %>
-    <%= link_to "Envoyer", send_mail_path(@invoice), class: "btn btn-success m-2" %>
-    <%= link_to "Modifier", edit_invoice_path(@invoice), class: "btn btn-primary m-2" %>
-	<%= button_to "Supprimer", @invoice, method: :delete, class: "btn btn-danger m-2" %>
-  </form>
+	<div class="d-flex justify-content-center">
+		<div>
+			<%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2" %>
+		</div>
+		<div>
+			<%= form_with url: save_to_cloudinary_invoice_path(@invoice), method: :post do %>
+				<%= submit_tag 'Sauvegarder sur mon cloud', class: "btn btn-warning text-white m-2" %>
+			<% end %>
+		</div>
+		<div>
+			<%= link_to "Envoyer", send_mail_path(@invoice), class: "btn btn-success m-2" %>
+		</div>
+		<div>
+			<%= link_to "Modifier", edit_invoice_path(@invoice), class: "btn btn-primary m-2" %>
+		</div>
+		<div>
+			<%= button_to "Supprimer", @invoice, method: :delete, class: "btn btn-danger m-2" %>
+		</div>
+	</div>
   <p style="color: green"><%= notice %></p>
 
 	<div class="invoice-box">

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :clients
   resources :invoices do
+    get 'cloudinary_invoices', on: :collection
+    post 'save_to_cloudinary', on: :member
     member do
       get 'download_pdf'
     end

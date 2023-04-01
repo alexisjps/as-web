@@ -13,5 +13,8 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import PdfModalController from "./pdf_modal_controller"
+application.register("pdf-modal", PdfModalController)
+
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
