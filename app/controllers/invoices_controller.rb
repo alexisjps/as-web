@@ -1,14 +1,36 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoice, only: %i[ show edit update destroy show_another]
+  before_action :set_invoice, only: %i[ show edit update destroy show_another save_to_cloudinary]
+  
   # My method for pdf
-
   def download_pdf
     @invoice = Invoice.find(params[:id])
     pdf = InvoicePdf.new(@invoice, current_user)
     send_data pdf.render, filename: "facture-#{@invoice.invoice_number}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
+  # Save invoice
+  def save_to_cloudinary
+    pdf = InvoicePdf.new(@invoice, current_user)
+    pdf_data = pdf.render
+
+    tempfile = Tempfile.new([@invoice.id.to_s, ".pdf"], binmode: true)
+    tempfile.write(pdf_data)
+    tempfile.rewind
+
+    @invoice.cloudinary_file.attach(io: tempfile, filename: "invoice-#{@invoice.id}.pdf", content_type: 'application/pdf')
+    tempfile.close
+    tempfile.unlink
+
+    flash[:notice] = "La facture a été sauvegardée sur Cloudinary avec succès."
+    redirect_to invoice_path(@invoice)
+  end
+
+  # See all invoices on cloudinary
+  def cloudinary_invoices
+    @invoices = current_user.invoices.joins(:cloudinary_file_attachment).distinct
+  end   
+  
   # GET /invoices or /invoices.json
   def index
     @invoices = Invoice.all

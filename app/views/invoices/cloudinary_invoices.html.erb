@@ -1,0 +1,48 @@
+<!-- app/views/invoices/cloudinary_invoices.html.erb -->
+<div class="container" data-controller="pdf-modal">
+  <h1>Mes factures sur Cloudinary</h1>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Numéro de facture</th>
+          <th>Date</th>
+          <th>Client</th>
+          <th>Voir</th>
+          <th>Télécharger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoices.each do |invoice| %>
+          <tr>
+            <td><%= invoice.invoice_number %></td>
+            <td><%= invoice.date %></td>
+            <td><%= invoice.client.denomination %></td>
+            <td>
+              <button type="button" class="btn btn-primary" data-url="<%= url_for(invoice.cloudinary_file) %>" data-action="click->pdf-modal#show">Voir</button>
+            </td>
+            <td>
+              <%= link_to "Télécharger", url_for(invoice.cloudinary_file), target: "_blank", class: "btn btn-success" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Add data-pdf-modal-target="modal" to the modal div -->
+  <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true" data-pdf-modal-target="modal">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pdfModalLabel">Facture</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe data-pdf-modal-target="iframe" class="w-100 h-100" style="min-height: 80vh;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

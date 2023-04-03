@@ -1,23 +1,31 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <div class="container-fluid">
-    <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "https://astephan.digital/wp-content/uploads/2022/02/Logo-AlexStephan-AS-web.png" %>
+    <div class="navbar-brand">
+    <%= link_to root_path do %>
+      <%= image_tag "https://astephan.digital/wp-content/uploads/2022/02/Logo-AlexStephan-AS-web.png", alt: "logo AS WEB", width: "200px" %>
     <% end %>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav ms-auto">
           <li class="nav-item active">
             <%= link_to "Accueil", "/", class: "nav-link" %>
           </li>
-          <li class="nav-item active">
-            <%= link_to "Facturation", "/invoices", class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Devis", "/quotes", class: "nav-link" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Facturation
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><%= link_to "Toutes mes factures", "/invoices", class: "dropdown-item" %></li>
+              <li><%= link_to "Factures enregistrées", "/invoices/cloudinary_invoices", class: "dropdown-item", data: { turbo: false } %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to "Nouvelle facture", new_invoice_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Nouveau devis", new_quote_path, class: "dropdown-item" %></li>
+            </ul>
           </li>
           <li class="nav-item active">
             <%= link_to "Créer un ticket", "/tickets", class: "nav-link red" %>
