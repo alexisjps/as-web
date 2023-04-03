@@ -16,5 +16,8 @@ application.register("map", MapController)
 import PdfModalController from "./pdf_modal_controller"
 application.register("pdf-modal", PdfModalController)
 
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
+
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)

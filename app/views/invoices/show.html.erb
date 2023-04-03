@@ -2,7 +2,7 @@
 .footer.mt-5 {
     display: none;
 }
-button.btn.btn-danger {
+/* button.btn.btn-danger {
     padding: 3px;
 }
 a.btn.btn-primary {
@@ -10,7 +10,7 @@ a.btn.btn-primary {
 }
 a.btn.btn-success {
     padding: 3px;
-}
+} */
 @media (max-width: 800px) {
 button.btn.btn-danger {
     padding: 6px;
@@ -23,8 +23,13 @@ a.btn.btn-success {
 }
 }
 </style>
-<div class="container">
-	<div class="d-flex justify-content-center">
+<div class="container" data-controller="toggle">
+ <div class="d-flex justify-content-center">
+  <button data-action="click->toggle#toggle" class="btn btn-primary m-2">
+      <i class="bi bi-list"></i> Menu
+    </button>
+  </div>
+	<div data-toggle-target="menu" class="d-flex justify-content-center d-none">
 		<div>
 			<%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2" %>
 		</div>
