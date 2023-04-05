@@ -20,7 +20,7 @@
             <td><%= invoice.date %></td>
             <td><%= invoice.client.denomination %></td>
             <td>
-             <button type="button" class="btn btn-primary" data-url="<%= url_for(invoice.cloudinary_file).sub('http:', 'https:') %>" data-action="click->pdf-modal#show">Voir</button>
+             <button type="button" class="btn btn-primary" data-url="<%= url_for(invoice.cloudinary_file).gsub('http:', 'https:') %>" data-action="click->pdf-modal#show">Voir</button>
             </td>
             <td>
               <%= link_to "Télécharger", url_for(invoice.cloudinary_file), target: "_blank", class: "btn btn-success" %>
