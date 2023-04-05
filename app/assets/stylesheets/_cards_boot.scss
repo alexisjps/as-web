@@ -3,7 +3,8 @@
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
         object-fit: cover;
-        max-height: 240px !important;
+        min-height: 240px;
+        max-height: 240px;
  }
 }
 

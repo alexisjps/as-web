@@ -1,4 +1,13 @@
 <div class="row row-cols-2 row-cols-md-3 g-4">
+<div class="col">
+    <div class="card m-3">
+      <img src="https://kinsta.com/fr/wp-content/uploads/sites/4/2019/02/que-sont-dns.png" class="card-img-top" alt="heroku nom de domaine">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to "Vérifier votre configuration DNS", dnslookupslookup_path %></h5>
+        <p class="card-text">Vérifier les DNS d'un nom de domaine en tant réel. Surveillez votre propagation DNS. Vérifiez que vous avez bien connecter votre nom de domaine à <b>Heroku</b></p>
+      </div>
+    </div>
+  </div>
   <div class="col">
     <div class="card m-3">
       <img src="https://images.unsplash.com/photo-1649209979970-f01d950cc5ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3282&q=80" class="card-img-top" alt="générateur de texte lorum ipsum">
@@ -17,24 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="card m-3">
-      <img src="https://images.unsplash.com/photo-1541929866681-94eb7c9a4c7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2606&q=80" class="card-img-top" alt="generateur de mot de passe">
-      <div class="card-body">
-        <h5 class="card-title"> <%= link_to "Générateur de mot de passe", mot_de_passe_path %></h5>
-        <p class="card-text">Générateur de mot de passe fiable et robuste. Fini les mots passes crackables.</p>
-      </div>
-    </div>
-  </div>
-  <!--<div id="outils" class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>-->
+  
 </div>
 <div class="row row-cols-2 row-cols-md-3 g-4">
   <div class="col">
@@ -55,3 +47,22 @@
       </div>
     </div>
   </div>
+  <div class="col">
+    <div class="card m-3">
+      <img src="https://images.unsplash.com/photo-1541929866681-94eb7c9a4c7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2606&q=80" class="card-img-top" alt="generateur de mot de passe">
+      <div class="card-body">
+        <h5 class="card-title"> <%= link_to "Générateur de mot de passe", mot_de_passe_path %></h5>
+        <p class="card-text">Générateur de mot de passe fiable et robuste. Fini les mots passes crackables.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <!--<div id="outils" class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>-->
