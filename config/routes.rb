@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'print_quote/:id', to: 'quotes#show_another', as: 'print_quote'
 
   # Antohers routes (a delete)
-  root "lorums#home"
+  root "pages#home"
   get "/lorum", to: "lorums#index"
   get "/lorum-resultat", to: "lorums#lorum_result"
   get "emojis", to: "emojis#index"
