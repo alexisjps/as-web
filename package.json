@@ -7,6 +7,7 @@
     "@popperjs/core": "^2.11.7",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.4",
     "flatpickr": "^4.6.13",
     "jquery": "^3.6.4",
     "popper.js": "^1.16.1",
