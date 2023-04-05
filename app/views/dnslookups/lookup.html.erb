@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <h1 class="text-center">DNS Lookup</h1>
-      <%= form_with url: dnslookupslookup_path, method: :get, local: true, class: 'mt-4' do %>
+      <h1 class="text-center">Vérifier vos enregistrements DNS</h1>
+      <%= form_with url: dnslookupslookup_path, method: :get, local: true, class: 'mt-4' do |f| %>
         <div class="input-group">
-          <%= text_field_tag :domain, params[:domain], class: 'form-control', placeholder: 'Entrez un nom de domaine (ex: example.com)' %>
+          <%= f.text_field :domain, class: 'form-control', placeholder: 'Entrez un nom de domaine (ex: example.com)' %>
           <button class="btn btn-primary" type="submit">Rechercher</button>
         </div>
       <% end %>
@@ -28,8 +28,10 @@
                         <%= "#{record.preference} #{record.exchange}" %>
                       <% elsif record_type == 'CNAME' %>
                         <%= record.domainname %>
-                        <% if record.domainname.to_s.include?('herokudns') %>
-                          <i class="bi bi-check-circle text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Bien configuré pour Heroku"></i>
+                        <% if record.domainname.to_s.include?('heroku') %>
+                          <i class="fa fa-check-circle text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Bien configuré pour Heroku"></i>
+                        <% else %>
+                          <i class="fa fa-times-circle text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Non configuré pour Heroku"></i>
                         <% end %>
                       <% elsif record_type == 'TXT' %>
                         <%= record.strings.join(' ') %>
@@ -49,3 +51,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Activation des tooltips
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
