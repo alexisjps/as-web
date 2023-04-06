@@ -1,2 +1,0 @@
-class Lorum < ApplicationRecord
-end

@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 puts 'Clean database'
-Lorum.destroy_all
+# Lorum.destroy_all
 
 Ticket.destroy_all
 
@@ -23,16 +23,16 @@ end
 
 puts 'Clean ok'
 sleep(1)
-puts 'Create lorums ipsum texting'
-numero = 1
-200.times do
-    numero += 1
-    Lorum.create!(
-        paragraphe: Faker::Lorem.paragraph_by_chars(number: (numero * 100), supplemental: false),
-        number: numero
-    )
-end
-puts 'Lorum ipsum created'
+# puts 'Create lorums ipsum texting'
+# numero = 1
+# 200.times do
+#     numero += 1
+#     Lorum.create!(
+#         paragraphe: Faker::Lorem.paragraph_by_chars(number: (numero * 100), supplemental: false),
+#         number: numero
+#     )
+# end
+# puts 'Lorum ipsum created'
 puts 'user creating'
 alexis = User.create!(first_name: 'Alexis', last_name: "Stephan", email: 'test@test.com', password: '123456', siret: "123456789", phone: '0646820375', address: '12 rue lesueur Paris')
 sleep(1)

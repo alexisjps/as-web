@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "pages#home"
   mount RailsAdmin::Engine => '/exit', as: 'rails_admin'
   resources :coordinates
   devise_for :users
@@ -19,11 +20,4 @@ Rails.application.routes.draw do
   # Manage invoice / quote
   get "invoices/:id/send", to: "invoices#send_mail", as: "send_mail"
   get 'print_quote/:id', to: 'quotes#show_another', as: 'print_quote'
-
-  # Antohers routes (a delete)
-  root "pages#home"
-  get "/lorum", to: "lorums#index"
-  get "/lorum-resultat", to: "lorums#lorum_result"
-  get "emojis", to: "emojis#index"
-  get 'mot-de-passe', to: 'pages#password'
 end

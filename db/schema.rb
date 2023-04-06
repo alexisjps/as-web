@@ -56,14 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_111236) do
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
-  create_table "coordinates", force: :cascade do |t|
-    t.float "longitude"
-    t.float "latitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "address"
-  end
-
   create_table "invoices", force: :cascade do |t|
     t.integer "amount", default: 0
     t.date "date"
@@ -79,13 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_111236) do
     t.integer "discount", default: 0
     t.index ["client_id"], name: "index_invoices_on_client_id"
     t.index ["user_id"], name: "index_invoices_on_user_id"
-  end
-
-  create_table "lorums", force: :cascade do |t|
-    t.text "paragraphe"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "number"
   end
 
   create_table "quotes", force: :cascade do |t|
