@@ -13,10 +13,7 @@ Rails.application.routes.draw do
   end
   resources :quotes
   resources :tickets
-
-  # Check dns
-  get 'dns', to: 'dnslookups#lookup', as: 'dnslookupslookup'
-  # Fin check dns
+  
   # Manage invoice / quote
   get "invoices/:id/send", to: "invoices#send_mail", as: "send_mail"
   get 'print_quote/:id', to: 'quotes#show_another', as: 'print_quote'

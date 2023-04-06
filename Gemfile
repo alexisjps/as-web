@@ -10,9 +10,6 @@ gem "faker", "~> 2.18"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use dns check
-gem 'dnsruby'
-
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
@@ -24,10 +21,6 @@ gem "devise"
 
 # Use cloudinary
 gem "cloudinary"
-
-# Geocode
-gem "geocoder"
-
 
 # use matrix for debug
 gem 'matrix'
