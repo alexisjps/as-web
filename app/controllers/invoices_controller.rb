@@ -23,7 +23,7 @@ class InvoicesController < ApplicationController
     tempfile.unlink
 
     flash[:notice] = "La facture a été sauvegardée sur Cloudinary avec succès."
-    redirect_to invoice_path(@invoice)
+    redirect_to cloudinary_invoices_invoices_path
   end
 
   # See all invoices on cloudinary

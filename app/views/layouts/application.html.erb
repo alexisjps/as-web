@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <%= render '/shared/navbar' %>
     <title>As WEB</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= favicon_link_tag 'https://astephan.digital/wp-content/uploads/2022/02/Group-1-1.png' %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>   
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,12 +15,9 @@
     <%= render 'layouts/google' %>
   </head>
   <body data-turbo-suppress-warning>
-    <%= render '/shared/navbar' %>
     <%= render 'shared/flashes' %>
       <%= yield %>
       </div>
-    <%= render "shared/footer" %>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>   
   </body>
+  <%= render "shared/footer" %>
 </html>
