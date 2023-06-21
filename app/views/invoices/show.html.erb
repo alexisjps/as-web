@@ -24,8 +24,8 @@ a.btn.btn-success {
 }
 </style>
 <div class="container">
- <div class="d-flex justify-content-center" data-controller="toggle">
-  <button data-action="click->toggle#toggle" class="btn btn-primary m-2">
+ <div data-controller="toggle" class="d-flex justify-content-center">
+  <button data-action="click->toggle#toggle" data-toggle-target="menu" class="btn btn-primary m-2">
       <i class="bi bi-list"></i> Menu
     </button>
   </div>

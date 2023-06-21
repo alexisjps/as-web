@@ -3,7 +3,7 @@
     display: none;
 }
 </style>
-<div class="container" data-controller="toggle">  
+<div>  
   <p style="color: green"><%= notice %></p>
 
   <h1>Vos factures</h1>
@@ -13,7 +13,7 @@
     </button>
   </div>
 
-  <div data-toggle-target="menu" class="d-none special">
+  <div class="container" data-controller="toggle" data-toggle-target="menu" class="d-none special">
     <div class="d-flex justify-content-center">
       <%= link_to "Factures enregistrées", cloudinary_invoices_invoices_path, class: "btn btn-dark m-2" %>
       <%= link_to "Nouvelle facture", new_invoice_path, class:"btn btn-success m-2 text-white" %>
