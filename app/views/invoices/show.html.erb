@@ -23,12 +23,12 @@ a.btn.btn-success {
 }
 }
 </style>
-<div class="container">
- <div data-controller="toggle" class="d-flex justify-content-center">
-  <button data-action="click->toggle#toggle" class="btn btn-primary m-2">
+<div data-controller="toggle" class="container">
+	<div class="d-flex justify-content-center">
+		<button data-action="click->toggle#toggle" class="btn btn-primary m-2">
       <i class="bi bi-list"></i> Menu
     </button>
-  </div>
+	</div>
 	<div data-toggle-target="menu" class="d-flex justify-content-center d-none">
 		<div>
 			<%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2" %>
