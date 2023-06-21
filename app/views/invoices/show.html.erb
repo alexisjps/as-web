@@ -1,137 +1,93 @@
 <style>
-.footer.mt-5 {
-    display: none;
-}
-/* button.btn.btn-danger {
-    padding: 3px;
-}
-a.btn.btn-primary {
-    padding: 3px;
-}
-a.btn.btn-success {
-    padding: 3px;
-} */
-@media (max-width: 800px) {
-button.btn.btn-danger {
-    padding: 6px;
-}
-a.btn.btn-primary {
-    padding: 6px;
-}
-a.btn.btn-success {
-    padding: 6px;
-}
-}
+    .footer.mt-5 {
+        display: none;
+    }
+
+    @media (max-width: 800px) {
+        button.btn.btn-danger {
+            padding: 6px;
+        }
+        a.btn.btn-primary {
+            padding: 6px;
+        }
+        a.btn.btn-success {
+            padding: 6px;
+        }
+    }
 </style>
+
 <div data-controller="toggle" class="container">
-	<div class="d-flex justify-content-center">
-		<button data-action="click->toggle#toggle" class="btn btn-primary m-2">
-      <i class="bi bi-list"></i> Menu
-    </button>
-	</div>
-	<div data-toggle-target="menu" class="d-flex justify-content-center d-none">
-		<div>
-			<%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2" %>
-		</div>
-		<div>
-			<%= form_with url: save_to_cloudinary_invoice_path(@invoice), method: :post do %>
-				<%= submit_tag 'Sauvegarder', class: "btn btn-warning text-white m-2" %>
-			<% end %>
-		</div>
-		<div>
-			<%= link_to "Envoyer", send_mail_path(@invoice), class: "btn btn-success m-2" %>
-		</div>
-		<div>
-			<%= link_to "Modifier", edit_invoice_path(@invoice), class: "btn btn-primary m-2" %>
-		</div>
-		<div>
-			<%= button_to "Supprimer", @invoice, method: :delete, class: "btn btn-danger m-2" %>
-		</div>
-	</div>
-  <p style="color: green"><%= notice %></p>
+    <div class="d-flex justify-content-center">
+        <button data-action="click->toggle#toggle" class="btn btn-primary m-2">
+            <i class="bi bi-list"></i> Menu
+        </button>
+    </div>
+    <div data-toggle-target="menu" class="d-flex justify-content-center d-none">
+        <div>
+            <%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2" %>
+        </div>
+        <div>
+            <%= form_with url: save_to_cloudinary_invoice_path(@invoice), method: :post do |f| %>
+                <%= f.submit 'Sauvegarder', class: "btn btn-warning text-white m-2" %>
+            <% end %>
+        </div>
+        <div>
+            <%= link_to "Envoyer", send_mail_path(@invoice), class: "btn btn-success m-2" %>
+        </div>
+        <div>
+            <%= link_to "Modifier", edit_invoice_path(@invoice), class: "btn btn-primary m-2" %>
+        </div>
+        <div>
+            <%= button_to "Supprimer", @invoice, method: :delete, class: "btn btn-danger m-2" %>
+        </div>
+    </div>
+    <p style="color: green;"><%= notice %></p>
 
-	<div class="invoice-box">
-				<table cellpadding="0" cellspacing="0">
-					<tr class="top">
-						<td colspan="2">
-							<table>
-								<tr>
-									<td class="title">
-										<% if current_user.photo.attached? %>
-						<%= cl_image_tag current_user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "rounded mb-5" %>
-						<% end %>
-									</td>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <% if current_user.photo.attached? %>
+                                    <%= cl_image_tag current_user.photo.key, gravity: "faces", crop: "fill", width: 80, height: 80, class: "rounded mb-5" %>
+                                <% end %>
+                            </td>
 
-									<td>
-										Facture n° #: <%= @invoice.invoice_number %><br />
-										Créée: <%= @invoice.date %><br />
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
+                            <td>
+                                Facture n° #: <%= @invoice.invoice_number %><br />
+                                Créée: <%= @invoice.date %><br />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
 
-					<tr class="information">
-						<td colspan="2">
-							<table>
-								<tr>
-									<td>
-										<%= current_user.first_name %> <%= current_user.last_name %><br />
-										<%= current_user.address %><br />
-					<%= current_user.phone %><br />
-					<%= current_user.email %><br />
-										N° Siret : <%= current_user.siret %><br />
-					<%= current_user.tva if current_user.tva != nil %><br />
-					<p class="mt-3 text-center"><b>Titre de la facture : <%= @invoice.description.camelcase %></b></p>
-									</td>
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                <%= current_user.first_name %> <%= current_user.last_name %><br />
+                                <%= current_user.address %><br />
+                                <%= current_user.phone %><br />
+                                <%= current_user.email %><br />
+                                N° Siret : <%= current_user.siret %><br />
+                                <%= current_user.tva if current_user.tva.present? %><br />
+                                <p class="mt-3 text-center"><b>Titre de la facture : <%= @invoice.description.camelcase %></b></p>
+                            </td>
 
-									<td>
-										<%= @invoice.client.first_name %> <%= @invoice.client.denomination %><br />
-										<%= @invoice.client.email %><br />
-										<%= @invoice.client.compagny_address %>
-					<%= @invoice.client.compagny_siret if @invoice.client.compagny_siret != nil %>
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-					<tr class="heading">
-						<td>Informations de paiements :</td>
-
-						<td></td>
-					</tr>
-
-					<tr class="details">
-						<td><%= current_user.infos_payment %></td>
-
-						<td></td>
-					</tr>
-
-					<tr class="heading">
-						<td>Description</td>
-
-						<td>Prix HT</td>
-					</tr>
-
-					<tr class="item">
-						<td><%= @invoice.prestation %></td>
-
-						<td><%= @invoice.amount %>€ HT</td>
-					</tr>
-
-					<% if @invoice.discount == nil %>
-						<% @invoice.discount = 0 %>
-					<% end %>
-					<tr class="total">
-					<td> Promotion : <b><%= @invoice.discount %>%</b></td>
-					<% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
-						<td> Total TVA : <%= total_tva %>€<br>
-						<% with_tva = (total_tva + @invoice.amount) %>
-						<% first_step = (with_tva.to_i * @invoice.discount) / 100 %>
-						<% second_step = with_tva - first_step %>
-						Total : <%= second_step %>€ TTC </td>
-					</tr>
-			<td style="margin-top: 20px!important;"><%= current_user.conditions %></td>
-				</table>
-	</div>
+                            <td>
+                                <%= @invoice.client.first_name %> <%= @invoice.client.denomination %><br />
+                                <%= @invoice.client.email %><br />
+                                <%= @invoice.client.compagny_address %>
+                                <%= @invoice.client.compagny_siret if @invoice.client.compagny_siret.present? %>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
