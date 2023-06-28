@@ -23,31 +23,28 @@ a.btn.btn-success {
 }
 }
 </style>
+
 <div data-controller="toggle" class="container">
- <div class="d-flex justify-content-center">
-  <button data-action="click->toggle#toggle" class="btn btn-primary m-2">
+  <div class="d-flex justify-content-center">
+    <button data-action="click->toggle#toggle" class="btn btn-primary m-2">
       <i class="bi bi-list"></i> Menu
     </button>
   </div>
-	<div data-toggle-target="menu" class="d-flex justify-content-center d-none">
-		<div>
-			<%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2" %>
-		</div>
-		<div>
-			<%= form_with url: save_to_cloudinary_invoice_path(@invoice), method: :post do %>
-				<%= submit_tag 'Sauvegarder', class: "btn btn-warning text-white m-2" %>
-			<% end %>
-		</div>
-		<div>
-			<%= link_to "Envoyer", send_mail_path(@invoice), class: "btn btn-success m-2" %>
-		</div>
-		<div>
-			<%= link_to "Modifier", edit_invoice_path(@invoice), class: "btn btn-primary m-2" %>
-		</div>
-		<div>
-			<%= button_to "Supprimer", @invoice, method: :delete, class: "btn btn-danger m-2" %>
-		</div>
-	</div>
+
+  <div id="sidebar" class="sidebar" data-toggle-target="menu">
+    <button data-action="click->toggle#toggle" class="btn btn-close m-2">
+      <i class="bi bi-x"></i>
+    </button>
+    <div class="d-flex flex-column align-items-start">
+      <%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2" %>
+      <%= form_with url: save_to_cloudinary_invoice_path(@invoice), method: :post do %>
+        <%= submit_tag 'Sauvegarder', class: "btn btn-warning text-white m-2" %>
+      <% end %>
+      <%= link_to "Envoyer", send_mail_path(@invoice), class: "btn btn-success m-2" %>
+      <%= link_to "Modifier", edit_invoice_path(@invoice), class: "btn btn-primary m-2" %>
+      <%= button_to "Supprimer", @invoice, method: :delete, class: "btn btn-danger m-2" %>
+    </div>
+  </div>
   <p style="color: green"><%= notice %></p>
 
 	<div class="invoice-box">

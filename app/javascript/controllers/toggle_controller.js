@@ -2,11 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = [ "menu" ]
+  static targets = [ "menu", "overlay" ]
 
   toggle() {
-    console.log('toggle')
-    this.menuTarget.classList.toggle("d-none")
-    return;
+    this.menuTarget.classList.toggle('active');
+    this.overlayTarget.classList.toggle('active');
   }
 }
