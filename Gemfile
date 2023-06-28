@@ -18,6 +18,8 @@ gem "puma", "~> 5.0"
 
 # Use authentification
 gem "devise"
+# Use the autorization
+gem "pundit"
 
 # Use cloudinary
 gem "cloudinary"
