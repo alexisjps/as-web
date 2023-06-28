@@ -33,11 +33,12 @@ class InvoicesController < ApplicationController
   
   # GET /invoices or /invoices.json
   def index
-    @invoices = Invoice.all
+    @invoices = policy_scope(Invoice)
   end
 
   # GET /invoices/1 or /invoices/1.json
   def show
+    authorize @invoice
   end
   # GET /print/1 
   def show_another
@@ -71,6 +72,7 @@ class InvoicesController < ApplicationController
     @clients = Client.all
     @user = current_user
     @invoice = Invoice.new(invoice_params)
+    authorize @invoice
     @invoice.user = @user
     respond_to do |format|
       if @invoice.save
@@ -85,6 +87,7 @@ class InvoicesController < ApplicationController
 
   # PATCH/PUT /invoices/1 or /invoices/1.json
   def update
+    authorize @invoice
     respond_to do |format|
       if @invoice.update(invoice_params)
         format.html { redirect_to invoice_url(@invoice), notice: "Invoice mise à jour faite" }
@@ -99,7 +102,7 @@ class InvoicesController < ApplicationController
   # DELETE /invoices/1 or /invoices/1.json
   def destroy
     @invoice.destroy
-
+    authorize @invoice
     respond_to do |format|
       format.html { redirect_to invoices_url, notice: "Invoice suppression réussie" }
       format.json { head :no_content }
