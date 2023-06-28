@@ -1,15 +1,13 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoice, only: %i[ show edit update destroy show_another save_to_cloudinary]
+  before_action :set_invoice, only: %i[show edit update destroy show_another save_to_cloudinary]
   
-  # My method for pdf
   def download_pdf
     @invoice = Invoice.find(params[:id])
     pdf = InvoicePdf.new(@invoice, current_user)
     send_data pdf.render, filename: "facture-#{@invoice.invoice_number}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
-  # Save invoice
   def save_to_cloudinary
     pdf = InvoicePdf.new(@invoice, current_user)
     pdf_data = pdf.render
@@ -26,48 +24,41 @@ class InvoicesController < ApplicationController
     redirect_to cloudinary_invoices_invoices_path
   end
 
-  # See all invoices on cloudinary
   def cloudinary_invoices
     @invoices = current_user.invoices.joins(:cloudinary_file_attachment).distinct
   end   
   
-  # GET /invoices or /invoices.json
   def index
     @invoices = policy_scope(Invoice)
   end
 
-  # GET /invoices/1 or /invoices/1.json
   def show
     authorize @invoice
   end
-  # GET /print/1 
+
   def show_another
   end
 
-  # GET /invoices/new
   def new
     @invoice = Invoice.new
     @user = current_user
     @clients = Client.where(user_id: @user.id)
   end
 
-  # GET /invoices/1/edit
   def edit
     @user = current_user
     @clients = Client.where(user_id: @user.id)
   end
 
-  # GET /invoices/1/send
   def send_mail
     @invoice = Invoice.find(params[:id])
     @user = current_user
     InvoiceMailer.send_invoice(@invoice).deliver_now
     Invoice.update(@invoice.id, status: true)
     redirect_to invoices_path
-    flash.alert = "Facture envoyée à #{@invoice.client.first_name}"
+    flash.alert = "Facture envoyée à #{invoice.client.first_name}"
   end
 
-  # POST /invoices or /invoices.json
   def create
     @clients = Client.all
     @user = current_user
@@ -85,7 +76,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /invoices/1 or /invoices/1.json
   def update
     authorize @invoice
     respond_to do |format|
@@ -99,10 +89,9 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # DELETE /invoices/1 or /invoices/1.json
   def destroy
-    @invoice.destroy
     authorize @invoice
+    @invoice.destroy
     respond_to do |format|
       format.html { redirect_to invoices_url, notice: "Invoice suppression réussie" }
       format.json { head :no_content }
@@ -110,7 +99,6 @@ class InvoicesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_invoice
       @invoice = Invoice.find(params[:id])
     end

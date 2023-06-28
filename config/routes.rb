@@ -10,11 +10,11 @@ Rails.application.routes.draw do
     member do
       get 'download_pdf'
     end
+    delete 'destroy', on: :member # Ajout de la route pour la suppression
   end
   resources :quotes
   resources :tickets
   
-  # Manage invoice / quote
   get "invoices/:id/send", to: "invoices#send_mail", as: "send_mail"
   get 'print_quote/:id', to: 'quotes#show_another', as: 'print_quote'
 end
