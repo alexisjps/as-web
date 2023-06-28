@@ -10,6 +10,7 @@
           <th>Date</th>
           <th>Client</th>
           <th>Télécharger</th>
+          <th>Supprimer</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,9 @@
             <td><%= invoice.client.denomination %></td>
             <td>
               <%= link_to "Télécharger", url_for(invoice.cloudinary_file), target: "_blank", class: "btn btn-success" %>
+            </td>
+            <td>
+              <%= button_to "Supprimer", invoice_path(invoice), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette facture ?" }, class: "btn btn-danger" %>
             </td>
           </tr>
         <% end %>
