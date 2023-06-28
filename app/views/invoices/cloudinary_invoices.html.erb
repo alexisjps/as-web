@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @invoices.each do |invoice| %>
+        <% @invoices.reverse_each do |invoice| %>
           <tr>
             <td><%= invoice.invoice_number %></td>
             <td><%= invoice.date %></td>
