@@ -67,7 +67,7 @@ class InvoicesController < ApplicationController
     @invoice.user = @user
     respond_to do |format|
       if @invoice.save
-        format.html { redirect_to invoice_url(@invoice), notice: "Invoice création réussie." }
+        format.html { redirect_to invoices_path(@invoice), notice: "Invoice création réussie." }
         format.json { render :show, status: :created, location: @invoice }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -80,7 +80,7 @@ class InvoicesController < ApplicationController
     authorize @invoice
     respond_to do |format|
       if @invoice.update(invoice_params)
-        format.html { redirect_to invoice_url(@invoice), notice: "Invoice mise à jour faite" }
+        format.html { redirect_to invoices_path(@invoice), notice: "Invoice mise à jour faite" }
         format.json { render :show, status: :ok, location: @invoice }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -93,7 +93,7 @@ class InvoicesController < ApplicationController
     authorize @invoice
     @invoice.destroy
     respond_to do |format|
-      format.html { redirect_to invoices_url, notice: "Invoice suppression réussie" }
+      format.html { redirect_to invoices_path, notice: "Invoice suppression réussie" }
       format.json { head :no_content }
     end
   end
@@ -103,7 +103,6 @@ class InvoicesController < ApplicationController
       @invoice = Invoice.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def invoice_params
       params.require(:invoice).permit(:amount, :my_company_siret, :date, :description, :invoice_number, :prestation, :invoice_tva, :client_id, :discount)
     end
