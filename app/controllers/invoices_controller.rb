@@ -65,27 +65,19 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(invoice_params)
     authorize @invoice
     @invoice.user = @user
-    respond_to do |format|
-      if @invoice.save
-        format.html { redirect_to invoices_path(@invoice), notice: "Invoice création réussie." }
-        format.json { render :show, status: :created, location: @invoice }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
+    if @invoice.save!
+      redirect_to invoices_path(@invoice)
+    else
+      render :new
     end
   end
 
   def update
     authorize @invoice
-    respond_to do |format|
-      if @invoice.update(invoice_params)
-        format.html { redirect_to invoice_path(@invoice), notice: "Invoice mise à jour faite" }
-        format.json { render :show, status: :ok, location: @invoice }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
+    if @invoice.update(invoice_params)
+      redirect_to invoices_path(@invoice)
+    else
+      render :edit
     end
   end
 
