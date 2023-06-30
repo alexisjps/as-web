@@ -38,7 +38,7 @@ a.btn.btn-success {
                 <% total_tva = (invoice.amount * invoice.invoice_tva.to_f) / 100 %>
                 <%= total_tva + invoice.amount %>€ TTC</p>
               <div class="d-flex justify-content-between spacing-mob">
-                <%= link_to "Aperçu", "/invoices/<%= invoice.id %>", class: "btn btn-primary" %>
+                <a href="/invoices/<%= invoice.id %>" class: "btn btn-primary"> Aperçu <\a>
                 <%= button_to "Supprimer", invoice, method: :delete, class: "btn btn-danger" %>
                 <% if invoice.status == false %>
                 <%= link_to "Envoyer", send_mail_path(invoice), class: "btn btn-success" %>
