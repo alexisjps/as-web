@@ -80,7 +80,7 @@ class InvoicesController < ApplicationController
     authorize @invoice
     respond_to do |format|
       if @invoice.update(invoice_params)
-        format.html { redirect_to invoices_path(@invoice), notice: "Invoice mise à jour faite" }
+        format.html { redirect_to invoice_path(@invoice), notice: "Invoice mise à jour faite" }
         format.json { render :show, status: :ok, location: @invoice }
       else
         format.html { render :edit, status: :unprocessable_entity }
