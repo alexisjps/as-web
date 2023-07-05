@@ -6,7 +6,55 @@
 <div class="container">
   <h1>Modifier ma facture</h1>
 </div>
-<%= render "form", invoice: @invoice %>
+
+<div class="container p-5" style="background-color: #fff; border: 1px solid #F4F4F4;">
+  <%= simple_form_for(@invoice, url: invoice_path(@invoice), method: :patch) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <div class="d-flex justify-content-center">
+          <%= f.input :invoice_number, :label => "Numéro de facturation" %>
+      </div>
+      <div class="facture-informations">
+        <div class="my-infos">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, width: 80, height: 80, :gravity=>"faces", :crop=>"fill", class: "rounded mb-5" %>
+          <% end %>
+          <h4>Facture éditée par :</h4>
+          <%= current_user.first_name %> <%= current_user.last_name %><br>
+          <%= current_user.address %><br>
+          <%= current_user.phone %><br>
+          <%= current_user.email %><br>
+          <% if current_user.tva != nil %>
+            N° TVA : <%= current_user.tva %><br>
+          <% end %>
+          Siret : <%= current_user.siret %>
+        </div>
+        <div class="informations-client">
+          <div class="d-flex align-items-end flex-column">
+               <%= f.input :client_id, collection: @clients, label_method: :first_name %>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center w-100">
+          <%= f.input :date, :label => "Date de facturation", as: :string, input_html: { data: { controller: 'flatpickr' } } %>
+      </div>
+          <%= f.input :description, :label => "Titre de la facture" %>
+          <%= f.input :prestation, :label => "Prestations à facturer :" %>
+      <div class="d-flex align-items-end flex-column w-20">
+          <%= f.input :invoice_tva, value: "0%", collection: ["0%", "20%", "10%", "5.5%"], :label => "Taux de tva" %>
+          <%= f.input :discount, :label => "Promotion : %" %>
+          <%= f.input :amount, :label => "Total HT" %>
+      </div>
+          <h4>Informations de paiements :</h4><br>
+          IBAN : <%= current_user.infos_payment %><br><br>
+           <h4>Conditions de paiements :</h4><br>
+           <%= current_user.conditions %><br><br>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-success", value: 'Modifier' %>
+    </div>
+  <% end %>
+</div>
 
 <br>
 

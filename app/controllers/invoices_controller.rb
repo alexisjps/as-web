@@ -46,8 +46,18 @@ class InvoicesController < ApplicationController
   end
 
   def edit
+    authorize @invoice
     @user = current_user
     @clients = Client.where(user_id: @user.id)
+  end
+
+  def update
+    authorize @invoice
+    if @invoice.update(invoice_params)
+      redirect_to invoice_path(@invoice)
+    else
+      render :edit
+    end
   end
 
   def send_mail
@@ -66,18 +76,9 @@ class InvoicesController < ApplicationController
     authorize @invoice
     @invoice.user = @user
     if @invoice.save!
-      redirect_to invoices_path(@invoice)
+      redirect_to invoice_path(@invoice)
     else
       render :new
-    end
-  end
-
-  def update
-    authorize @invoice
-    if @invoice.update(invoice_params)
-      redirect_to invoices_path(@invoice)
-    else
-      render :edit
     end
   end
 
