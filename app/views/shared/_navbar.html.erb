@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-brand">
     <%= link_to root_path do %>
-      <%= image_tag "https://astephan.digital/wp-content/uploads/2022/02/Logo-AlexStephan-AS-web.png", alt: "logo AS WEB", width: "200px" %>
+      <%= image_tag "https://as-web.website/wp-content/uploads/2022/02/Logo-AlexStephan-AS-web.png", alt: "logo AS WEB", width: "200px" %>
     <% end %>
     </div>
 
@@ -32,7 +32,7 @@
           </li>
          
           <li class="nav-item active">
-            <%= link_to "Blog", "https://astephan.digital/blog", class: "nav-link", target: "_blank" %>
+            <%= link_to "Blog", "https://as-web.website/blog", class: "nav-link", target: "_blank" %>
           </li>
           <% if current_user != nil %>
           <% if current_user.photo.attached? %>
