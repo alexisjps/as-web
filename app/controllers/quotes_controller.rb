@@ -26,7 +26,7 @@ class QuotesController < ApplicationController
       @quote = Quote.new(quote_params)
       @quote.user = current_user
       if @quote.save!
-        redirect_to quote_url(@quote), notice: "Quote création réussie."
+        redirect_to quote_url(@quote), notice: "Devis créé"
       else
         flash.now[:alert] = "La création du devis a échoué."
         puts @quote.errors.full_messages # Afficher les messages d'erreur dans la console
@@ -38,7 +38,7 @@ class QuotesController < ApplicationController
       authorize @quote
   
       if @quote.update(quote_params)
-        redirect_to quote_url(@quote), notice: "Quote mise à jour faite."
+        redirect_to quote_url(@quote), notice: "Devis mis à jour"
       else
         render :edit, status: :unprocessable_entity
       end
@@ -48,7 +48,7 @@ class QuotesController < ApplicationController
       authorize @quote
       @quote.destroy
   
-      redirect_to quotes_url, notice: "Quote suppression réussie."
+      redirect_to quotes_url, notice: "Devis supprimé"
     end
   
     private

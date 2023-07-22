@@ -86,7 +86,7 @@ class InvoicesController < ApplicationController
     authorize @invoice
     @invoice.destroy
     respond_to do |format|
-      format.html { redirect_to invoices_path, notice: "Invoice suppression réussie" }
+      format.html { redirect_to invoices_path, notice: "Facture supprimée" }
       format.json { head :no_content }
     end
   end
