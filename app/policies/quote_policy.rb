@@ -10,7 +10,7 @@ class QuotePolicy < ApplicationPolicy
   end
 
   def show?
-    record.user_id == user.id
+    record.user == user
   end
 
   def create?
@@ -18,10 +18,10 @@ class QuotePolicy < ApplicationPolicy
   end
 
   def update?
-    record.user_id == user.id
+    record.user == user || user.admin
   end
 
   def destroy?
-    record.user_id == user.id
+    record.user == user.id || user.admin
   end
 end
