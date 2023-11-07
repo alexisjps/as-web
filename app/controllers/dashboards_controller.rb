@@ -9,12 +9,5 @@ class DashboardsController < ApplicationController
       'Factures Payées ce Mois': Invoice.where(status: true, date: start_of_month..end_of_month).sum(:amount),
       'Factures Impayées ce Mois': Invoice.where(status: false, date: start_of_month..end_of_month).sum(:amount)
     }
-
-    @data_for_year_pie_chart = {
-      'Factures Payées cette Année': Invoice.where(status: true, date: start_of_year..end_of_year).sum(:amount),
-      'Factures Impayées cette Année': Invoice.where(status: false, date: start_of_year..end_of_year).sum(:amount)
-    }
-    puts @data_for_month_pie_chart.inspect
-    puts @data_for_year_pie_chart.inspect
   end
 end

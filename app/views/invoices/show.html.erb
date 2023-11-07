@@ -36,6 +36,7 @@ a.btn.btn-success {
       <i class="bi bi-x"></i>
     </button>
     <div class="d-flex flex-column align-items-start">
+      <%= link_to "Mon tableau de bord", dashboards_show_path, class: "btn btn-danger m-2" %>
       <%= link_to "Mes factures", invoices_path, class: "btn btn-dark m-2" %>
       <%= form_with url: save_to_cloudinary_invoice_path(@invoice), method: :post do %>
         <%= submit_tag 'Sauvegarder', class: "btn btn-warning text-white m-2" %>
