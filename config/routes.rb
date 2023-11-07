@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root "pages#home"
-
+  
   mount RailsAdmin::Engine => '/exit', as: 'rails_admin'
-
+  
   devise_for :users
+  get 'dashboards/show'
   
   resources :coordinates
   resources :clients
