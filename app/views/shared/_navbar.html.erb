@@ -20,6 +20,7 @@
               Facturation
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><%= link_to "Dashboard", dashboards_show_path, class: "dropdown-item" %></li>
               <li><%= link_to "Toutes mes factures", "/invoices", class: "dropdown-item" %></li>
               <li><%= link_to "Factures enregistrées", "/invoices/cloudinary_invoices", class: "dropdown-item", data: { turbo: false } %></li>
               <li><hr class="dropdown-divider"></li>
@@ -27,10 +28,6 @@
               <li><%= link_to "Nouveau devis", new_quote_path, class: "dropdown-item" %></li>
             </ul>
           </li>
-          <li class="nav-item active">
-            <%= link_to "Créer un ticket", "/tickets", class: "nav-link red" %>
-          </li>
-         
           <li class="nav-item active">
             <%= link_to "Blog", "https://as-web.website/blog", class: "nav-link", target: "_blank" %>
           </li>

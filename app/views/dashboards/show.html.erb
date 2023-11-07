@@ -1,13 +1,5 @@
-<style>
-.footer.mt-5 {
-    display: none;
-}
-</style>
 
-<div class="container" data-controller="toggle">  
-  <p style="color: green"><%= notice %></p>
-
-  <h1>Vos factures</h1>
+<div class="container mt-5" data-controller="toggle">
   <div class="d-flex justify-content-center">
     <button data-action="click->toggle#toggle" class="btn btn-primary m-2">
       <i class="bi bi-list"></i> Menu
@@ -19,9 +11,8 @@
       <i class="bi bi-x"></i>
     </button>
     <div class="d-flex flex-column align-items-start">
-      <%= link_to "Tableau de bord", dashboards_show_path, class: "btn btn-danger m-2" %>
       <%= link_to "Factures enregistrées", cloudinary_invoices_invoices_path, class: "btn btn-dark m-2" %>
-      <%= link_to "Nouvelle facture", new_invoice_path, class:"btn btn-success m-2 text-white" %>
+      <%= link_to "Mes factures", invoices_path, class:"btn btn-success m-2 text-white" %>
       <%= link_to "Mes clients", clients_path, class:"btn btn-info m-2 text-white" %>
       <%= link_to "Mes devis", quotes_path, class:"btn btn-primary m-2 text-white" %>
     </div>
@@ -29,12 +20,19 @@
 
   <div id="overlay" class="overlay" data-action="click->toggle#toggle"></div>
 
-  <% if current_user.infos_payment == nil || current_user.conditions == nil %>
-    <br><br>
-    <p style="color: red;"> Vous n'avez pas configuré votre compte de facturation. <%= link_to "Cliquez ici", edit_user_registration_path %> pour le faire.</p>
-  <% end %>
-
-  <div id="invoices">
-    <%= render "invoice" %>
+  <h1>Mon tableau de bord</h1>
+  <div class="row mt-5">
+    <div class="col-12 col-md-12">
+      <h2>Factures du Mois</h2>
+      <div data-controller="graph" data-graph-values="<%= @data_for_month_pie_chart.to_json %>" class="chart-container">
+        <div id="chart-month" style="height: 300px;"></div>
+      </div>
+    </div>
+    <!-- <div class="col-12 col-md-6">
+      <h2>Factures de l'Année</h2>
+      <div data-controller="graph" data-graph-values="<%= @data_for_year_pie_chart.to_json %>" class="chart-container">
+        <div id="chart-year" style="height: 300px;"></div>
+      </div>
+    </div> -->
   </div>
 </div>
