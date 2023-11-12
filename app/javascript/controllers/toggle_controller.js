@@ -17,6 +17,7 @@ export default class extends Controller {
       this.menuTarget.innerText = 'Menu'
     }
   }
+  
   disable() {
     this.menuTarget.classList.remove('active');
     // this.overlayTarget.classList.remove('active');
