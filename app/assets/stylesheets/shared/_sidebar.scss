@@ -15,20 +15,20 @@
   left: 0;
 }
 
-.overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-}
+// .overlay {
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   height: 100%;
+//   width: 100%;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   z-index: 10;
+//   opacity: 0;
+//   visibility: hidden;
+//   transition: opacity 0.3s, visibility 0.3s;
+// }
 
-.overlay.active {
-  opacity: 0.5;
-  visibility: visible;
-}
+// .overlay.active {
+//   opacity: 0.5;
+//   visibility: visible;
+// }

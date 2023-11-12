@@ -18,13 +18,13 @@
     </div>
   </div>
 
-  <div id="overlay" class="overlay" data-action="click->toggle#toggle"></div>
+  <%# <div id="overlay" class="overlay" data-action="click->toggle#toggle"></div> %>
 
   <h1>Mon tableau de bord</h1>
   <div class="row mt-5">
     <div class="col-12 col-md-12">
       <h2>Factures du Mois</h2>
-      <div data-controller="graph" data-graph-values="<%= @data_for_month_pie_chart.to_json %>" class="chart-container">
+      <div data-controller="graph" data-graph-values="<%= @data_for_month_pie_chart.to_json %> €" class="chart-container">
         <div id="chart-month" style="height: 300px;"></div>
       </div>
     </div>
