@@ -6,7 +6,7 @@ Chartkick.addAdapter(Chart);
 
 export default class extends Controller {
   connect() {
-    console.log("Graph controller connected");
+    // console.log("Graph controller connected");
 
     // Graphique du mois
     const monthData = JSON.parse(this.element.dataset.graphValues);
