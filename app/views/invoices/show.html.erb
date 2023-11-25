@@ -124,7 +124,7 @@ a.btn.btn-success {
 					<td> Promotion : <b><%= @invoice.discount %>%</b></td>
 					<% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
 						<td> Total TVA : <%= total_tva %>€<br>
-						<% with_tva = (total_tva + @invoice.amount) %>
+						<% with_tva = (total_tva + @invoice.amount.to_f) %>
 						<% first_step = (with_tva.to_i * @invoice.discount) / 100 %>
 						<% second_step = with_tva - first_step %>
 						Total : <%= second_step %>€ TTC </td>
