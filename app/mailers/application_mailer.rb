@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "alexis@as-web.website"
+  default from: "invoice@as-web.website"
   layout "mailer"
 end
