@@ -1,4 +1,4 @@
-<span class="preheader">Facture de : <%= @user.first_name %></span>
+<span class="preheader">Facture de : <%= @invoice.user.first_name %></span>
 <% total_tva = (@invoice.amount * @invoice.invoice_tva.to_f) / 100 %>
     <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
       <tr>
@@ -6,8 +6,8 @@
           <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
               <td class="email-masthead">
-                <% if @user.photo.attached? %>
-                    <%= cl_image_tag @user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "img-av" %>
+                <% if @invoice.user.photo.attached? %>
+                    <%= cl_image_tag @invoice.user.photo.key, :gravity=>"faces", :crop=>"fill", width: 80, height: 80, class: "img-av" %>
                 <% end %>
               </td>
             </tr>
@@ -69,7 +69,7 @@
                               <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                                 <tr>
                                   <td align="center">
-                                    <a href="mailto:<%= @user.email %>" class="f-fallback button button--green text-white" target="_blank">Me contacter</a>
+                                    <a href="mailto:<%= @invoice.user.email %>" class="f-fallback button button--green text-white" target="_blank">Me contacter</a>
                                   </td>
                                 </tr>
                               </table>
@@ -117,9 +117,9 @@
                         </table>
                         <p class="f-fallback purchase_total purchase_total--label">TVA : <%= total_tva %> €</p><br>
                         <p>Promotion : <b><%= @invoice.discount %>%</b></p>
-                        <p><b>Informations de paiement :</b> <%= @user.infos_payment %>.</p>
+                        <p><b>Informations de paiement :</b> <%= @invoice.user.infos_payment %>.</p>
                         <p><b>Conditions de paiement :</b>
-                          <br><%= @user.conditions %>.</p></p>
+                          <br><%= @invoice.user.conditions %>.</p></p>
                         <!-- Sub copy -->
                         <table class="body-sub" role="presentation">
                           <tr>
@@ -140,12 +140,12 @@
                   <tr>
                     <td class="content-cell" align="center">
                       <p class="f-fallback sub align-center">
-                        <%= @user.first_name %> <%= @user.last_name %>
-                        <br><%= @user.address %>
-                        <br><%= @user.phone %>
-                        <br><%= @user.email %>
-                        <br><%= @user.siret %>
-                        <br><%= @user.tva %>
+                        <%= @invoice.user.first_name %> <%= @invoice.user.last_name %>
+                        <br><%= @invoice.user.address %>
+                        <br><%= @invoice.user.phone %>
+                        <br><%= @invoice.user.email %>
+                        <br><%= @invoice.user.siret %>
+                        <br><%= @invoice.user.tva %>
                       </p>
                     </td>
                   </tr>

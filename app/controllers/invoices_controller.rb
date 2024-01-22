@@ -1,9 +1,8 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoice, only: %i[show edit update destroy show_another save_to_cloudinary]
+  before_action :set_invoice, only: %i[show edit update destroy show_another save_to_cloudinary send_mail]
   
   def download_pdf
-    @invoice = Invoice.find(params[:id])
     pdf = InvoicePdf.new(@invoice, current_user)
     send_data pdf.render, filename: "facture-#{@invoice.invoice_number}.pdf", type: 'application/pdf', disposition: 'inline'
   end
@@ -62,12 +61,12 @@ class InvoicesController < ApplicationController
 
   def send_mail
     @invoice = Invoice.find(params[:id])
-    @user = current_user
-    InvoiceMailer.send_invoice(@invoice).deliver_now
-    Invoice.update(@invoice.id, status: true)
-    redirect_to invoice_path(@invoice)
-    flash.alert = "Facture envoyée à #{@invoice.client.first_name}"
-  end
+    pdf = InvoicePdf.new(@invoice, current_user).render
+  
+    InvoiceMailer.send_invoice(@invoice, pdf).deliver_now
+    @invoice.update(status: true)
+    redirect_to invoices_path, notice: "Facture envoyée à #{@invoice.client.first_name}"
+  end  
 
   def create
     @clients = Client.all
