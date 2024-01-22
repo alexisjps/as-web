@@ -7,14 +7,8 @@ import { application } from "./application"
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
-import GraphController from "./graph_controller"
-application.register("graph", GraphController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
-import MapController from "./map_controller"
-application.register("map", MapController)
 
 import PdfModalController from "./pdf_modal_controller"
 application.register("pdf-modal", PdfModalController)
